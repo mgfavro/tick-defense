@@ -10,6 +10,18 @@ function base(depth) {
   return depth ? '../'.repeat(depth) : '';
 }
 
+function logoBlock(depth) {
+  const b = base(depth);
+  return `      <div class="logo-mark">
+        <img src="${b}assets/images/logo.png" alt="" class="logo-img" width="52" height="52" />
+      </div>
+      <div class="logo-text">
+        <span class="l1">NATURAL</span>
+        <span class="l2">TICK DEFENSE</span>
+        <span class="l3">NATURAL PROTECTION. OUTDOOR FREEDOM.</span>
+      </div>`;
+}
+
 function navHtml(depth) {
   const b = base(depth);
   const home = `${b}index.html`;
@@ -29,7 +41,7 @@ function navHtml(depth) {
       </div>
       <a href="${home}#how">How It Works</a>
       <a href="${home}#pricing">Plans &amp; Pricing</a>
-      <a href="${home}#about">About Us</a>
+      <a href="${b}about.html">About Us</a>
       <div class="nav-dropdown">
         <button type="button" class="nav-dropdown-trigger" aria-haspopup="true">Resources <span class="caret">▾</span></button>
         <div class="nav-dropdown-menu">
@@ -45,17 +57,7 @@ function headerHtml(depth) {
   return `<header class="site-header">
   <div class="header-inner">
     <a href="${b}index.html" class="logo">
-      <div class="logo-mark">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1f3a26" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <ellipse cx="12" cy="13" rx="5" ry="6"/>
-          <path d="M12 7V4M9 5L7 3M15 5l2-2M7 11l-3-1M17 11l3-1M7 15l-3 1M17 15l3 1M9 19l-1 2M15 19l1 2"/>
-        </svg>
-      </div>
-      <div class="logo-text">
-        <span class="l1">NATURAL</span>
-        <span class="l2">TICK DEFENSE</span>
-        <span class="l3">NATURAL PROTECTION. OUTDOOR FREEDOM.</span>
-      </div>
+${logoBlock(depth)}
     </a>
 ${navHtml(depth)}
     <a href="${b}index.html#pricing" class="btn btn-primary">Choose My Plan</a>
@@ -65,22 +67,13 @@ ${navHtml(depth)}
 
 function footerHtml(depth) {
   const b = base(depth);
+  const home = `${b}index.html`;
   return `<footer class="footer">
   <div class="footer-inner">
     <div>
-      <div class="logo">
-        <div class="logo-mark">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6">
-            <ellipse cx="12" cy="13" rx="5" ry="6"/>
-            <path d="M12 7V4M9 5L7 3M15 5l2-2M7 11l-3-1M17 11l3-1M7 15l-3 1M17 15l3 1M9 19l-1 2M15 19l1 2"/>
-          </svg>
-        </div>
-        <div class="logo-text">
-          <span class="l1">NATURAL</span>
-          <span class="l2">TICK DEFENSE</span>
-          <span class="l3">NATURAL PROTECTION. OUTDOOR FREEDOM.</span>
-        </div>
-      </div>
+      <a href="${home}" class="logo">
+${logoBlock(depth)}
+      </a>
     </div>
     <div>
       <h6>Services</h6>
@@ -89,10 +82,26 @@ function footerHtml(depth) {
       </ul>
     </div>
     <div>
+      <h6>Company</h6>
+      <ul>
+        <li><a href="${b}about.html">About Us</a></li>
+        <li><a href="${home}#services">Our Treatments</a></li>
+        <li><a href="${home}">Reviews</a></li>
+        <li><a href="${b}service-areas.html">Service Areas</a></li>
+        <li><a href="${home}">Blog</a></li>
+        <li><a href="${home}#pricing">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
       <h6>Resources</h6>
       <ul>
         ${RESOURCES.map((r) => `<li><a href="${b}resources/${r.slug}.html">${r.title}</a></li>`).join('\n        ')}
       </ul>
+    </div>
+    <div class="footer-areas">
+      <h6>Service Areas</h6>
+      <p style="font-size:12px; color:rgba(255,255,255,0.7); margin-bottom:10px;">Proudly serving Northern Virginia</p>
+      <a href="${b}service-areas.html" class="areas-cta">View All Areas →</a>
     </div>
   </div>
   <div class="footer-bottom">
@@ -158,10 +167,11 @@ const PAGE_STYLES = `
   }
   .logo { display: flex; align-items: center; gap: 12px; }
   .logo-mark {
-    width: 46px; height: 46px; border-radius: 50%;
-    background: #fff; border: 2px solid var(--green-dark);
+    width: 52px; height: 52px; flex-shrink: 0;
     display: flex; align-items: center; justify-content: center;
+    background: transparent; border: none;
   }
+  .logo-mark .logo-img { width: 100%; height: 100%; object-fit: contain; display: block; }
   .logo-text .l1, .logo-text .l2 {
     font-family: 'Playfair Display', serif;
     font-size: 18px; font-weight: 700; color: var(--green-dark);
@@ -178,7 +188,7 @@ const PAGE_STYLES = `
     background: none; border: none; cursor: pointer; font-family: inherit; padding: 0;
   }
   .nav > a:hover, .nav-dropdown-trigger:hover { color: var(--green-dark); }
-  .caret { font-size: 9px; }
+  .caret { font-size: 14px; line-height: 1; margin-left: 2px; }
   .nav-dropdown { position: relative; }
   .nav-dropdown-menu {
     position: absolute; top: calc(100% + 4px); left: 0;
@@ -254,18 +264,25 @@ const PAGE_STYLES = `
   }
   .footer-inner {
     max-width: 1280px; margin: 0 auto;
-    display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 36px;
+    display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr 1.2fr; gap: 36px;
+  }
+  .areas-cta {
+    display: inline-block; border: 1px solid rgba(255,255,255,0.4);
+    color: #fff; padding: 8px 14px; font-size: 10px;
+    letter-spacing: 1.2px; margin-top: 14px; border-radius: 3px;
+    text-transform: uppercase; font-weight: 600;
   }
   .footer .logo-text .l1, .footer .logo-text .l2 { color: #fff; }
   .footer .logo-text .l3 { color: rgba(255,255,255,0.6); }
-  .footer .logo-mark { background: transparent; border-color: #fff; }
   .footer h6 {
     font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
     color: #fff; margin-bottom: 18px; text-transform: uppercase;
   }
   .footer ul { list-style: none; }
+  .footer li { margin-bottom: 8px; }
   .footer li a {
     font-size: 12px; color: rgba(255,255,255,0.7);
+    display: inline-block;
   }
   .footer li a:hover { color: #fff; }
   .footer-bottom {
@@ -374,4 +391,24 @@ write(
   })
 );
 
-console.log('Built', SERVICES.length + RESOURCES.length + 1, 'landing pages.');
+write(
+  path.join(root, 'about.html'),
+  pageHtml({
+    depth: 0,
+    title: 'About Us',
+    heroTitle: 'About Us',
+    heroIntro: 'Natural protection for the outdoor spaces you love most.',
+    body: `<p>Natural Tick Defense helps Northern Virginia families enjoy their yards with confidence. We specialize in natural-based tick, mosquito, and outdoor pest protection for residential properties, estates, and commercial outdoor spaces.</p>
+      <h2>Our mission</h2>
+      <p>We believe outdoor freedom shouldn't come with worry. Our team combines targeted treatments, local expertise, and responsive service so you can spend more time outside with the people and pets you love.</p>
+      <h2>What sets us apart</h2>
+      <ul>
+        <li>Natural-based barrier treatments applied to key harborage areas</li>
+        <li>Plans designed for families, pets, and the environment</li>
+        <li>No long-term contracts—cancel anytime</li>
+        <li>Local Northern Virginia service you can count on</li>
+      </ul>`,
+  })
+);
+
+console.log('Built', SERVICES.length + RESOURCES.length + 2, 'landing pages.');
