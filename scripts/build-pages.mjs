@@ -10,10 +10,13 @@ function base(depth) {
   return depth ? '../'.repeat(depth) : '';
 }
 
-function logoBlock(depth) {
+function logoBlock(depth, variant = 'header') {
   const b = base(depth);
-  return `      <div class="logo-mark">
-        <img src="${b}assets/images/logo.png" alt="" class="logo-img" width="52" height="52" />
+  const file = variant === 'footer' ? 'logo-footer.png' : 'logo.png';
+  const markClass = variant === 'footer' ? 'logo-mark logo-mark-footer' : 'logo-mark';
+  const size = variant === 'footer' ? 64 : 68;
+  return `      <div class="${markClass}">
+        <img src="${b}assets/images/${file}" alt="" class="logo-img" width="${size}" height="${size}" />
       </div>
       <div class="logo-text">
         <span class="l1">NATURAL</span>
@@ -72,7 +75,7 @@ function footerHtml(depth) {
   <div class="footer-inner">
     <div>
       <a href="${home}" class="logo">
-${logoBlock(depth)}
+${logoBlock(depth, 'footer')}
       </a>
     </div>
     <div>
@@ -167,11 +170,15 @@ const PAGE_STYLES = `
   }
   .logo { display: flex; align-items: center; gap: 12px; }
   .logo-mark {
-    width: 52px; height: 52px; flex-shrink: 0;
+    width: 68px; height: 68px; flex-shrink: 0;
     display: flex; align-items: center; justify-content: center;
     background: transparent; border: none;
   }
   .logo-mark .logo-img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .logo-mark-footer {
+    width: 72px; height: 72px; background: #fff; border-radius: 50%;
+    padding: 4px; box-sizing: border-box;
+  }
   .logo-text .l1, .logo-text .l2 {
     font-family: 'Playfair Display', serif;
     font-size: 18px; font-weight: 700; color: var(--green-dark);
