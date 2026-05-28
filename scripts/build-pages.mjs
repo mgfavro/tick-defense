@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { SERVICES, RESOURCES } from './site-data.mjs';
+import { SERVICES, RESOURCES, SERVICE_AREAS } from './site-data.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, '..');
@@ -36,7 +36,7 @@ function navHtml(depth) {
           ${resourceLinks}
         </div>
       </div>
-      <a href="${home}#areas">Service Areas</a>
+      <a href="${b}service-areas.html">Service Areas</a>
     </nav>`;
 }
 
@@ -232,6 +232,22 @@ const PAGE_STYLES = `
   }
   .page-content ul { margin: 0 0 20px 20px; }
   .page-cta { margin-top: 36px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .areas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 14px;
+    margin-top: 28px;
+  }
+  .area-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 18px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--green-darker);
+    text-align: center;
+  }
   .footer {
     background: var(--green-darker); color: rgba(255,255,255,0.8);
     padding: 50px 32px 28px;
@@ -343,4 +359,19 @@ for (const r of RESOURCES) {
   );
 }
 
-console.log('Built', SERVICES.length + RESOURCES.length, 'landing pages.');
+const areasCards = SERVICE_AREAS.map((area) => `<div class="area-card">${area}</div>`).join('\n      ');
+
+write(
+  path.join(root, 'service-areas.html'),
+  pageHtml({
+    depth: 0,
+    title: 'Service Areas',
+    heroTitle: 'Service Areas',
+    heroIntro: 'Proudly serving Northern Virginia homeowners, estates, and commercial properties.',
+    body: `<p>Natural Tick Defense provides tick, mosquito, and outdoor pest protection throughout Northern Virginia. If you don't see your town listed, contact us—we may still serve your area.</p>
+      <div class="areas-grid">${areasCards}</div>
+      <p style="margin-top:28px">Don't see your area? Call us to confirm coverage for your property.</p>`,
+  })
+);
+
+console.log('Built', SERVICES.length + RESOURCES.length + 1, 'landing pages.');

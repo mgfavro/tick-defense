@@ -1,3 +1,26 @@
+export const SERVICE_AREAS = [
+  'Haymarket',
+  'Gainesville',
+  'Bristow',
+  'Manassas',
+  'Clifton',
+  'Leesburg',
+  'Ashburn',
+  'Middleburg',
+  'Warrenton',
+  'Centreville',
+  'Fairfax',
+  'Vienna',
+  'McLean',
+  'Great Falls',
+  'Purcellville',
+  'Round Hill',
+  'Aldie',
+  'South Riding',
+  'Nokesville',
+  'Dumfries',
+];
+
 export const SERVICES = [
   { title: 'Tick Control', slug: 'tick-control', intro: 'Reduce tick populations around your home and reclaim your yard with natural-based barrier treatments.' },
   { title: 'Mosquito Control', slug: 'mosquito-control', intro: 'Enjoy patios, play areas, and outdoor gatherings with fewer mosquito bites all season long.' },
