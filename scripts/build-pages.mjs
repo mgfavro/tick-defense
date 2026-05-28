@@ -13,8 +13,8 @@ function base(depth) {
 function logoBlock(depth, variant = 'header') {
   const b = base(depth);
   const file = variant === 'footer' ? 'logo-footer.png' : 'logo.png';
-  const markClass = variant === 'footer' ? 'logo-mark logo-mark-footer' : 'logo-mark';
-  const size = variant === 'footer' ? 64 : 68;
+  const markClass = 'logo-mark';
+  const size = variant === 'footer' ? 72 : 68;
   return `      <div class="${markClass}">
         <img src="${b}assets/images/${file}" alt="" class="logo-img" width="${size}" height="${size}" />
       </div>
@@ -175,10 +175,6 @@ const PAGE_STYLES = `
     background: transparent; border: none;
   }
   .logo-mark .logo-img { width: 100%; height: 100%; object-fit: contain; display: block; }
-  .logo-mark-footer {
-    width: 72px; height: 72px; background: #fff; border-radius: 50%;
-    padding: 4px; box-sizing: border-box;
-  }
   .logo-text .l1, .logo-text .l2 {
     font-family: 'Playfair Display', serif;
     font-size: 18px; font-weight: 700; color: var(--green-dark);
