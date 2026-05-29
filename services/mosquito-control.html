@@ -83,8 +83,23 @@
     font-size: 13px; font-weight: 600; letter-spacing: 1px;
     text-transform: uppercase; text-align: center;
   }
-  .btn-primary { background: var(--green-dark); color: #fff; }
-  .btn-primary:hover { background: var(--green-darker); }
+  .btn-primary {
+    position: relative;
+    overflow: hidden;
+    background: var(--green-dark);
+    color: #fff;
+    z-index: 0;
+  }
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--green-darker);
+    transform: translateX(-101%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+  }
+  .btn-primary:hover::before { transform: translateX(0); }
   .btn-outline {
     background: transparent; color: var(--green-dark);
     border: 1.5px solid var(--green-dark);
