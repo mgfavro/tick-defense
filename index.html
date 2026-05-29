@@ -37,18 +37,18 @@
   /* ---------------- HEADER ---------------- */
   .site-header {
     background: var(--cream-light);
-    border-bottom: 1px solid rgba(0,0,0,0.04);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.18);
     position: sticky; top: 0; z-index: 200;
   }
   .header-inner {
     max-width: 1600px; margin: 0 auto;
-    padding: 22px 40px;
+    padding: 14px 40px;
     display: flex; align-items: center; justify-content: space-between;
-    gap: 28px;
+    gap: 24px;
   }
-  .logo { display: flex; align-items: center; gap: 14px; }
+  .logo { display: flex; align-items: center; gap: 12px; }
   .logo-mark {
-    width: 85px; height: 85px;
+    width: 70px; height: 70px;
     flex-shrink: 0;
     display: flex; align-items: center; justify-content: center;
     background: transparent;
@@ -62,25 +62,25 @@
   .logo-text { line-height: 1; }
   .logo-text .l1 {
     font-family: 'Playfair Display', serif;
-    font-size: 22px; font-weight: 700;
+    font-size: 25px; font-weight: 700;
     color: var(--green-dark); letter-spacing: 0.5px;
   }
   .logo-text .l2 {
     font-family: 'Playfair Display', serif;
-    font-size: 22px; font-weight: 700;
+    font-size: 25px; font-weight: 700;
     color: var(--green-dark); letter-spacing: 0.5px;
     display: block; margin-top: 2px;
   }
   .logo-text .l3 {
-    font-size: 10px; font-weight: 600;
+    font-size: 12px; font-weight: 600;
     color: var(--text-muted); letter-spacing: 1.5px;
     display: block; margin-top: 4px;
   }
 
-  .nav { display: flex; align-items: center; gap: 36px; }
+  .nav { display: flex; align-items: center; gap: 32px; }
   .nav > a,
   .nav-dropdown-trigger {
-    font-size: 17px; font-weight: 500;
+    font-size: 20px; font-weight: 500;
     color: var(--text-dark);
     display: inline-flex; align-items: center; gap: 4px;
     background: none; border: none; cursor: pointer;
@@ -88,7 +88,11 @@
   }
   .nav > a:hover,
   .nav-dropdown-trigger:hover { color: var(--green-dark); }
-  .caret { font-size: 16px; line-height: 1; margin-left: 2px; }
+  .caret { font-size: 18px; line-height: 1; margin-left: 2px; }
+  .site-header .btn {
+    padding: 12px 28px;
+    font-size: 18px;
+  }
   .nav-dropdown { position: relative; }
   .nav-dropdown-menu {
     position: absolute; top: calc(100% + 4px); left: 0;
@@ -690,10 +694,12 @@
   /* ---------------- RESPONSIVE ---------------- */
   @media (max-width: 1024px) {
     .nav { display: none; }
-    .header-inner { padding: 18px 24px; }
-    .logo-mark { width: 68px; height: 68px; }
-    .logo-text .l1, .logo-text .l2 { font-size: 18px; }
-    .logo-text .l3 { font-size: 8px; }
+    .header-inner { padding: 14px 24px; }
+    .logo-mark { width: 62px; height: 62px; }
+    .logo-text .l1, .logo-text .l2 { font-size: 21px; }
+    .logo-text .l3 { font-size: 10px; }
+    .nav > a, .nav-dropdown-trigger { font-size: 17px; }
+    .site-header .btn { padding: 12px 24px; font-size: 15px; }
     .btn { padding: 14px 28px; font-size: 13px; }
     .hero { min-height: 88vh; padding: 72px 24px 80px; }
     .hero-ctas .btn { min-width: 220px; padding: 14px 24px; font-size: 13px; }
@@ -728,7 +734,7 @@
   <div class="header-inner">
     <a href="index.html" class="logo">
       <div class="logo-mark">
-        <img src="assets/images/logo.png" alt="" class="logo-img" width="85" height="85" />
+        <img src="assets/images/logo.png" alt="" class="logo-img" width="70" height="70" />
       </div>
       <div class="logo-text">
         <span class="l1">NATURAL</span>
