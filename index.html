@@ -752,6 +752,7 @@
     .services-grid { grid-template-columns: repeat(3, 1fr); }
     .pricing-grid { grid-template-columns: repeat(3, 1fr); }
     .trust-inner { grid-template-columns: 1fr; }
+    .trust-dog { justify-self: center; }
     .footer-inner { grid-template-columns: 1fr 1fr; }
     .va-map { display: none; }
   }
@@ -767,8 +768,13 @@
     .services-grid { grid-template-columns: 1fr 1fr; }
     .pricing-grid { grid-template-columns: 1fr; }
     .trust-features { grid-template-columns: 1fr 1fr; }
-    .footer-inner { grid-template-columns: 1fr; }
-    .badges { gap: 20px; }
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 28px 20px; }
+    .footer-inner > div:first-child { grid-column: 1 / -1; }
+    .badges {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 18px 12px; justify-items: center;
+    }
+    .badge { justify-content: center; text-align: center; }
     .section { padding: 60px 20px; }
     .hero-ctas { flex-direction: column; align-items: center; width: 100%; }
     .hero-ctas .btn { width: 100%; max-width: 320px; min-width: 0; }
