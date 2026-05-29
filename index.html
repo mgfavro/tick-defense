@@ -62,36 +62,39 @@
   .logo-text { line-height: 1; }
   .logo-text .l1 {
     font-family: 'Playfair Display', serif;
-    font-size: 25px; font-weight: 700;
+    font-size: 20px; font-weight: 700;
     color: var(--green-dark); letter-spacing: 0.5px;
   }
   .logo-text .l2 {
     font-family: 'Playfair Display', serif;
-    font-size: 25px; font-weight: 700;
+    font-size: 20px; font-weight: 700;
     color: var(--green-dark); letter-spacing: 0.5px;
     display: block; margin-top: 2px;
   }
   .logo-text .l3 {
-    font-size: 12px; font-weight: 600;
+    font-size: 10px; font-weight: 600;
     color: var(--text-muted); letter-spacing: 1.5px;
     display: block; margin-top: 4px;
   }
 
-  .nav { display: flex; align-items: center; gap: 32px; }
+  .nav { display: flex; align-items: center; gap: 26px; flex-shrink: 1; min-width: 0; }
   .nav > a,
   .nav-dropdown-trigger {
-    font-size: 20px; font-weight: 500;
+    font-size: 15px; font-weight: 500;
     color: var(--text-dark);
     display: inline-flex; align-items: center; gap: 4px;
     background: none; border: none; cursor: pointer;
     font-family: inherit; padding: 0;
+    white-space: nowrap;
   }
   .nav > a:hover,
   .nav-dropdown-trigger:hover { color: var(--green-dark); }
-  .caret { font-size: 18px; line-height: 1; margin-left: 2px; }
+  .caret { font-size: 13px; line-height: 1; margin-left: 2px; }
   .site-header .btn {
-    padding: 12px 28px;
-    font-size: 18px;
+    padding: 11px 22px;
+    font-size: 14px;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
   .nav-dropdown { position: relative; }
   .nav-dropdown-menu {
@@ -345,17 +348,19 @@
   .section-title {
     text-align: center;
     font-family: 'Playfair Display', serif;
-    font-size: 14px;
-    letter-spacing: 4px;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 3px;
     color: var(--green-darker);
     text-transform: uppercase;
     margin-bottom: 56px;
     position: relative;
     display: flex; align-items: center; justify-content: center;
-    gap: 24px;
+    gap: 28px;
+    white-space: nowrap;
   }
   .section-title::before, .section-title::after {
-    content: ''; flex: 0 0 80px; height: 1px; background: var(--green-darker);
+    content: ''; flex: 0 0 100px; height: 1px; background: var(--green-darker);
     opacity: 0.4;
   }
 
@@ -696,10 +701,12 @@
     .nav { display: none; }
     .header-inner { padding: 14px 24px; }
     .logo-mark { width: 62px; height: 62px; }
-    .logo-text .l1, .logo-text .l2 { font-size: 21px; }
-    .logo-text .l3 { font-size: 10px; }
-    .nav > a, .nav-dropdown-trigger { font-size: 17px; }
-    .site-header .btn { padding: 12px 24px; font-size: 15px; }
+    .logo-text .l1, .logo-text .l2 { font-size: 18px; }
+    .logo-text .l3 { font-size: 9px; }
+    .nav > a, .nav-dropdown-trigger { font-size: 14px; }
+    .site-header .btn { padding: 11px 20px; font-size: 13px; }
+    .section-title { font-size: 20px; letter-spacing: 2px; gap: 16px; }
+    .section-title::before, .section-title::after { flex: 0 0 48px; }
     .btn { padding: 14px 28px; font-size: 13px; }
     .hero { min-height: 88vh; padding: 72px 24px 80px; }
     .hero-ctas .btn { min-width: 220px; padding: 14px 24px; font-size: 13px; }
