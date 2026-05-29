@@ -136,15 +136,19 @@
   .hero {
     position: relative;
     background-image:
-      linear-gradient(rgba(20,40,25,0.05), rgba(20,40,25,0.15)),
+      linear-gradient(to bottom, rgba(15,30,20,0.1) 0%, rgba(15,30,20,0.25) 55%, rgba(15,30,20,0.55) 100%),
       url('assets/images/hero.png');
     background-size: cover;
     background-position: center;
     min-height: 620px;
     padding: 60px 32px 80px;
+    display: flex;
+    flex-direction: column;
   }
   .hero-inner {
+    flex: 1;
     max-width: 1280px; margin: 0 auto;
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 48px;
@@ -263,24 +267,33 @@
   /* Badges row */
   .badges {
     max-width: 1280px;
+    width: 100%;
     margin: 40px auto 0;
     display: flex;
     gap: 48px;
     padding: 0 32px;
     flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
   }
   .badge {
     display: flex; align-items: center; gap: 12px;
     font-size: 11px; font-weight: 700;
     letter-spacing: 1.5px;
-    color: var(--green-darker);
+    color: #fff;
     text-transform: uppercase;
+    text-shadow:
+      0 0 8px rgba(255,255,255,0.95),
+      0 0 18px rgba(255,255,255,0.75),
+      0 0 32px rgba(255,255,255,0.45);
   }
   .badge-icon {
     width: 28px; height: 28px;
     display: flex; align-items: center; justify-content: center;
-    color: var(--green-dark);
+    color: #fff;
+    filter: drop-shadow(0 0 6px rgba(255,255,255,0.9)) drop-shadow(0 0 14px rgba(255,255,255,0.5));
   }
+  .badge-icon svg { fill: #fff; stroke: #fff; }
 
   /* ---------------- SECTION COMMONS ---------------- */
   .section {
@@ -753,25 +766,25 @@
   <div class="badges">
     <div class="badge">
       <span class="badge-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="#1f3a26"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3c.5.12 1 .2 1.5.2C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3c.5.12 1 .2 1.5.2C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z"/></svg>
       </span>
       Natural Based
     </div>
     <div class="badge">
       <span class="badge-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="#1f3a26"><circle cx="4.5" cy="9.5" r="2.5"/><circle cx="9" cy="5.5" r="2.5"/><circle cx="15" cy="5.5" r="2.5"/><circle cx="19.5" cy="9.5" r="2.5"/><path d="M12 11c-3 0-7 4-7 7 0 2 1.5 3 3 3 1.5 0 2.5-1 4-1s2.5 1 4 1 3-1 3-3c0-3-4-7-7-7z"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><circle cx="4.5" cy="9.5" r="2.5"/><circle cx="9" cy="5.5" r="2.5"/><circle cx="15" cy="5.5" r="2.5"/><circle cx="19.5" cy="9.5" r="2.5"/><path d="M12 11c-3 0-7 4-7 7 0 2 1.5 3 3 3 1.5 0 2.5-1 4-1s2.5 1 4 1 3-1 3-3c0-3-4-7-7-7z"/></svg>
       </span>
       Pet &amp; Kid Conscious
     </div>
     <div class="badge">
       <span class="badge-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="#1f3a26"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/><path stroke="#1f3a26" stroke-width="1.5" d="M8 22l1-3M12 22l1-3M16 22l1-3" fill="none"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/><path stroke="#fff" stroke-width="1.5" d="M8 22l1-3M12 22l1-3M16 22l1-3" fill="none"/></svg>
       </span>
       Rain Resistant
     </div>
     <div class="badge">
       <span class="badge-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="#1f3a26"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
       </span>
       Local Northern Virginia Service
     </div>
