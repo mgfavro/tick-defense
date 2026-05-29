@@ -94,7 +94,7 @@ function mobileMenuHtml(depth) {
     <a href="${b}services/hoa-commercial.html">Commercial &amp; HOA <span class="chev">&rsaquo;</span></a>
     <a href="${home}#how">How It Works <span class="chev">&rsaquo;</span></a>
     <a href="${b}about.html">About Us <span class="chev">&rsaquo;</span></a>
-    <a href="${b}resources/faqs.html">Resources <span class="chev">&rsaquo;</span></a>
+    <a href="${b}resources.html">Resources <span class="chev">&rsaquo;</span></a>
     <a href="${b}service-areas.html">Service Areas <span class="chev">&rsaquo;</span></a>
     <a href="${home}#pricing">Contact Us <span class="chev">&rsaquo;</span></a>
   </nav>
@@ -354,6 +354,20 @@ const PAGE_STYLES = `
     color: var(--green-darker);
     text-align: center;
   }
+  .link-cards { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 8px; }
+  .link-card {
+    display: grid; grid-template-columns: 1fr auto; align-items: center;
+    column-gap: 16px; row-gap: 6px;
+    background: #fff; border: 1px solid var(--border); border-radius: 8px;
+    padding: 20px 22px; transition: box-shadow .2s, transform .2s, border-color .2s;
+  }
+  .link-card:hover { border-color: var(--green-dark); box-shadow: 0 8px 22px rgba(0,0,0,0.06); transform: translateY(-2px); }
+  .link-card-title {
+    grid-column: 1; font-weight: 700; font-size: 14px; letter-spacing: 1px;
+    color: var(--green-darker); text-transform: uppercase;
+  }
+  .link-card-desc { grid-column: 1; font-size: 13px; color: var(--text-muted); line-height: 1.6; margin: 0; }
+  .link-card-chev { grid-column: 2; grid-row: 1 / span 2; align-self: center; font-size: 26px; color: var(--green-dark); }
   .footer {
     background: var(--green-darker); color: rgba(255,255,255,0.8);
     padding: 50px 32px 28px;
@@ -524,9 +538,38 @@ for (const s of SERVICES) {
 for (const r of RESOURCES) {
   write(
     path.join(root, 'resources', `${r.slug}.html`),
-    pageHtml({ depth: 1, title: r.title, heroTitle: r.title, heroIntro: r.intro, body: resourceBody(r) })
+    pageHtml({
+      depth: 1,
+      title: r.title,
+      heroTitle: r.title,
+      heroIntro: r.intro,
+      body: resourceBody(r),
+      backHref: `${base(1)}resources.html`,
+      backLabel: 'Back to Resources',
+    })
   );
 }
+
+const resourceCards = RESOURCES.map(
+  (r) => `<a class="link-card" href="resources/${r.slug}.html">
+        <span class="link-card-title">${r.title}</span>
+        <span class="link-card-desc">${r.intro}</span>
+        <span class="link-card-chev" aria-hidden="true">&rsaquo;</span>
+      </a>`
+).join('\n      ');
+
+write(
+  path.join(root, 'resources.html'),
+  pageHtml({
+    depth: 0,
+    title: 'Resources',
+    heroTitle: 'Resources',
+    heroIntro: 'Tips and guides to help you protect your yard, family, and pets all season long.',
+    body: `<div class="link-cards">
+      ${resourceCards}
+    </div>`,
+  })
+);
 
 const areasCards = SERVICE_AREAS.map((area) => `<div class="area-card">${area}</div>`).join('\n      ');
 
@@ -563,4 +606,4 @@ write(
   })
 );
 
-console.log('Built', SERVICES.length + RESOURCES.length + 2, 'landing pages.');
+console.log('Built', SERVICES.length + RESOURCES.length + 3, 'landing pages.');
