@@ -118,6 +118,14 @@
   }
   .page-content { padding: 64px 32px 80px; }
   .page-content-inner { max-width: 800px; margin: 0 auto; }
+  .page-back {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 600; letter-spacing: 0.5px;
+    color: var(--green-dark); margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+  .page-back span { font-size: 18px; line-height: 1; }
+  .page-back:hover { color: var(--green-darker); text-decoration: underline; }
   .page-content h2 {
     font-family: 'Playfair Display', serif;
     font-size: 26px; color: var(--green-darker); margin: 32px 0 14px;
@@ -303,6 +311,7 @@
 </section>
 <section class="page-content">
   <div class="page-content-inner">
+    <a href="../index.html#services" class="page-back"><span aria-hidden="true">&lsaquo;</span> Back to Services</a>
     <p>Custom tick and mosquito programs for HOAs, restaurants, wineries, resorts, and commercial outdoor spaces.</p>
     <h2>How we protect your property</h2>
     <p>Our technicians apply a natural-based barrier treatment to key harborage areas—property edges, landscape beds, shaded zones, and areas where your family and pets spend time outdoors.</p>

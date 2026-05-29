@@ -321,6 +321,14 @@ const PAGE_STYLES = `
   }
   .page-content { padding: 64px 32px 80px; }
   .page-content-inner { max-width: 800px; margin: 0 auto; }
+  .page-back {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 600; letter-spacing: 0.5px;
+    color: var(--green-dark); margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+  .page-back span { font-size: 18px; line-height: 1; }
+  .page-back:hover { color: var(--green-darker); text-decoration: underline; }
   .page-content h2 {
     font-family: 'Playfair Display', serif;
     font-size: 26px; color: var(--green-darker); margin: 32px 0 14px;
@@ -424,8 +432,11 @@ const PAGE_STYLES = `
   }
 `;
 
-function pageHtml({ depth, title, heroTitle, heroIntro, body }) {
+function pageHtml({ depth, title, heroTitle, heroIntro, body, backHref, backLabel }) {
   const b = base(depth);
+  const backLink = backHref
+    ? `<a href="${backHref}" class="page-back"><span aria-hidden="true">&lsaquo;</span> ${backLabel}</a>\n    `
+    : '';
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -446,7 +457,7 @@ ${mobileMenuHtml(depth)}
 </section>
 <section class="page-content">
   <div class="page-content-inner">
-    ${body}
+    ${backLink}${body}
     <div class="page-cta">
       <a href="${b}index.html#pricing" class="btn btn-primary">Choose My Plan</a>
       <a href="${b}index.html#pricing" class="btn btn-outline">View Pricing</a>
@@ -498,7 +509,15 @@ function write(filePath, html) {
 for (const s of SERVICES) {
   write(
     path.join(root, 'services', `${s.slug}.html`),
-    pageHtml({ depth: 1, title: s.title, heroTitle: s.title, heroIntro: s.intro, body: serviceBody(s) })
+    pageHtml({
+      depth: 1,
+      title: s.title,
+      heroTitle: s.title,
+      heroIntro: s.intro,
+      body: serviceBody(s),
+      backHref: `${base(1)}index.html#services`,
+      backLabel: 'Back to Services',
+    })
   );
 }
 
