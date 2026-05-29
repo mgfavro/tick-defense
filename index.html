@@ -149,10 +149,16 @@
     flex: 1;
     max-width: 1280px; margin: 0 auto;
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .hero-text h1 {
     font-family: 'Playfair Display', serif;
@@ -167,11 +173,14 @@
   .hero-sub {
     font-size: 18px;
     color: var(--text-dark);
-    max-width: 380px;
-    margin-bottom: 36px;
+    max-width: 520px;
+    margin: 0 auto 36px;
     line-height: 1.5;
   }
-  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+  .hero-ctas {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    justify-content: center;
+  }
 
   /* Quote card */
   .quote-card {
@@ -273,6 +282,7 @@
     gap: 48px;
     padding: 0 32px;
     flex-wrap: wrap;
+    justify-content: center;
     position: relative;
     z-index: 2;
   }
@@ -649,7 +659,6 @@
   /* ---------------- RESPONSIVE ---------------- */
   @media (max-width: 1024px) {
     .nav { display: none; }
-    .hero-inner { grid-template-columns: 1fr; }
     .hero-text h1 { font-size: 56px; }
     .steps { grid-template-columns: 1fr 1fr; gap: 32px; }
     .arrow { display: none; }
@@ -727,39 +736,6 @@
         <a href="#pricing" class="btn btn-primary">Choose My Plan</a>
         <a href="#pricing" class="btn btn-outline">View Pricing</a>
       </div>
-    </div>
-
-    <!-- Quote card -->
-    <div class="quote-card">
-      <div class="quote-head">
-        <div class="quote-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1f3a26" stroke-width="1.6">
-            <rect x="4" y="3" width="16" height="18" rx="1"/>
-            <path d="M9 7h2M9 11h2M9 15h2M13 7h2M13 11h2M13 15h2"/>
-          </svg>
-        </div>
-        <div>
-          <div class="quote-title">Commercial &amp; HOA Protection Quote</div>
-          <div class="quote-desc">Custom tick and mosquito protection for commercial properties, HOAs, restaurants, wineries, resorts, dog parks, and event spaces.</div>
-        </div>
-      </div>
-      <div class="quote-cta">Request a Custom Quote</div>
-      <form class="form-grid" onsubmit="event.preventDefault(); alert('Quote request submitted!');">
-        <input class="field" placeholder="Business / Property Name" />
-        <input class="field" placeholder="Contact Name" />
-        <input class="field" placeholder="Phone" />
-        <input class="field" placeholder="Email" />
-        <input class="field form-full" placeholder="Property Address" />
-        <select class="field field-select"><option>Property Type</option><option>HOA</option><option>Restaurant</option><option>Winery</option><option>Resort</option><option>Dog Park</option></select>
-        <input class="field" placeholder="Estimated Acreage" />
-        <div class="field-group form-full">
-          <span class="label">Areas Needing Treatment</span>
-          <span class="hint">Select all that apply</span>
-        </div>
-        <input class="field" placeholder="Preferred Frequency" />
-        <input class="field" placeholder="Event Dates / Notes" />
-        <button type="submit" class="quote-submit form-full">Request Commercial Quote</button>
-      </form>
     </div>
   </div>
 
