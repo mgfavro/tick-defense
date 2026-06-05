@@ -33,10 +33,9 @@ function navHtml(depth) {
   ).join('\n          ');
 
   return `    <nav class="nav">
+      <a href="${home}#how">How It Works</a>
       <a href="${home}#pricing">Plans &amp; Pricing</a>
       <a href="${home}#services">Services</a>
-      <a href="${home}#how">How It Works</a>
-      <a href="${b}franchise-opportunities.html">Franchise Opportunities</a>
       <div class="nav-dropdown">
         <button type="button" class="nav-dropdown-trigger" aria-haspopup="true">Resources <span class="caret">▾</span></button>
         <div class="nav-dropdown-menu">
@@ -55,7 +54,10 @@ function headerHtml(depth) {
 ${logoBlock(depth)}
     </a>
 ${navHtml(depth)}
-    <a href="${b}index.html#pricing" class="btn btn-primary">Choose My Plan</a>
+    <div class="header-actions">
+      <a href="${b}index.html#pricing" class="btn btn-primary">Choose My Plan</a>
+      <a href="${b}franchise-opportunities.html" class="franchise-link">Franchise Opportunities</a>
+    </div>
     <button type="button" class="menu-toggle" aria-label="Open menu" aria-expanded="false">
       <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
     </button>
@@ -254,7 +256,14 @@ const PAGE_STYLES = `
   }
   .nav > a:hover, .nav-dropdown-trigger:hover { color: var(--green-dark); }
   .caret { font-size: 14px; line-height: 1; margin-left: 2px; }
-  .nav-dropdown { position: relative; }
+  .header-actions { display: flex; align-items: center; gap: 20px; flex-shrink: 0; }
+  .franchise-link {
+    font-size: 13px; font-weight: 600; letter-spacing: 0.5px;
+    color: var(--green-dark); white-space: nowrap;
+    border-left: 1px solid var(--border); padding-left: 20px;
+  }
+  .franchise-link:hover { color: var(--green-darker); text-decoration: underline; }
+  .nav-dropdown { position: relative; display: inline-flex; align-items: center; }
   .nav-dropdown-menu {
     position: absolute; top: calc(100% + 4px); left: 0;
     min-width: 240px; background: #fff; border: 1px solid var(--border);
@@ -431,7 +440,7 @@ const PAGE_STYLES = `
   @media (max-width: 1024px) {
     .nav { display: none; }
     .menu-toggle { display: inline-flex; }
-    .site-header .header-inner > .btn-primary { display: none; }
+    .header-actions { display: none; }
     .mobile-menu { display: flex; }
     .mobile-bar { display: grid; }
     body { padding-bottom: 60px; }
