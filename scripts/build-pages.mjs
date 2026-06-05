@@ -251,6 +251,7 @@ const PAGE_STYLES = `
   .nav { display: flex; align-items: center; gap: 32px; }
   .nav > a, .nav-dropdown-trigger {
     font-size: 14px; font-weight: 500; color: var(--text-dark);
+    line-height: 1; margin: 0; vertical-align: middle;
     display: inline-flex; align-items: center; gap: 4px;
     background: none; border: none; cursor: pointer; font-family: inherit; padding: 0;
   }
