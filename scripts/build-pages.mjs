@@ -28,23 +28,15 @@ function logoBlock(depth, variant = 'header') {
 function navHtml(depth) {
   const b = base(depth);
   const home = `${b}index.html`;
-  const serviceLinks = SERVICES.map(
-    (s) => `<a href="${b}services/${s.slug}.html">${s.title}</a>`
-  ).join('\n          ');
   const resourceLinks = RESOURCES.map(
     (r) => `<a href="${b}resources/${r.slug}.html">${r.title}</a>`
   ).join('\n          ');
 
   return `    <nav class="nav">
-      <div class="nav-dropdown">
-        <button type="button" class="nav-dropdown-trigger" aria-haspopup="true">Services <span class="caret">▾</span></button>
-        <div class="nav-dropdown-menu">
-          ${serviceLinks}
-        </div>
-      </div>
-      <a href="${home}#how">How It Works</a>
       <a href="${home}#pricing">Plans &amp; Pricing</a>
-      <a href="${b}about.html">About Us</a>
+      <a href="${home}#services">Services</a>
+      <a href="${home}#how">How It Works</a>
+      <a href="${b}franchise-opportunities.html">Franchise Opportunities</a>
       <div class="nav-dropdown">
         <button type="button" class="nav-dropdown-trigger" aria-haspopup="true">Resources <span class="caret">▾</span></button>
         <div class="nav-dropdown-menu">
@@ -89,11 +81,11 @@ function mobileMenuHtml(depth) {
     </button>
   </div>
   <nav class="mobile-menu-links">
-    <a href="${home}#services">Services <span class="chev">&rsaquo;</span></a>
     <a href="${home}#pricing">Plans &amp; Pricing <span class="chev">&rsaquo;</span></a>
+    <a href="${home}#services">Services <span class="chev">&rsaquo;</span></a>
     <a href="${b}services/hoa-commercial.html">Commercial &amp; HOA <span class="chev">&rsaquo;</span></a>
     <a href="${home}#how">How It Works <span class="chev">&rsaquo;</span></a>
-    <a href="${b}about.html">About Us <span class="chev">&rsaquo;</span></a>
+    <a href="${b}franchise-opportunities.html">Franchise Opportunities <span class="chev">&rsaquo;</span></a>
     <a href="${b}resources.html">Resources <span class="chev">&rsaquo;</span></a>
     <a href="${b}service-areas.html">Service Areas <span class="chev">&rsaquo;</span></a>
     <a href="${home}#pricing">Contact Us <span class="chev">&rsaquo;</span></a>
@@ -147,7 +139,7 @@ ${logoBlock(depth, 'footer')}
     <div>
       <h6>Company</h6>
       <ul>
-        <li><a href="${b}about.html">About Us</a></li>
+        <li><a href="${b}franchise-opportunities.html">Franchise Opportunities</a></li>
         <li><a href="${home}#services">Our Treatments</a></li>
         <li><a href="${home}">Reviews</a></li>
         <li><a href="${b}service-areas.html">Service Areas</a></li>
@@ -606,4 +598,26 @@ write(
   })
 );
 
-console.log('Built', SERVICES.length + RESOURCES.length + 3, 'landing pages.');
+write(
+  path.join(root, 'franchise-opportunities.html'),
+  pageHtml({
+    depth: 0,
+    title: 'Franchise Opportunities',
+    heroTitle: 'Franchise Opportunities',
+    heroIntro: 'Build a business around natural outdoor protection. Bring Natural Tick Defense to your community.',
+    body: `<p>Natural Tick Defense is growing, and we're looking for motivated owner-operators who want to deliver natural-based tick, mosquito, and outdoor pest protection in their local markets.</p>
+      <h2>Why franchise with us</h2>
+      <ul>
+        <li>A proven, natural-based service model families and pet owners trust</li>
+        <li>Recurring revenue through seasonal and monthly protection plans</li>
+        <li>Training, branding, and marketing support to get you started</li>
+        <li>Protected territories with strong demand for outdoor pest control</li>
+      </ul>
+      <h2>Who we're looking for</h2>
+      <p>Whether you're an entrepreneur entering the home-services space or an existing operator looking to add a high-demand offering, we'd love to talk. No prior pest-control experience is required—just a commitment to great service and your community.</p>
+      <h2>Let's connect</h2>
+      <p>Tell us about yourself and the area you'd like to serve, and our team will reach out with the next steps.</p>`,
+  })
+);
+
+console.log('Built', SERVICES.length + RESOURCES.length + 4, 'landing pages.');
