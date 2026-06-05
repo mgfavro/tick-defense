@@ -142,11 +142,6 @@ ${logoBlock(depth, 'footer')}
       <h6>Company</h6>
       <ul>
         <li><a href="${b}franchise-opportunities.html">Franchise Opportunities</a></li>
-        <li><a href="${home}#services">Our Treatments</a></li>
-        <li><a href="${home}">Reviews</a></li>
-        <li><a href="${b}service-areas.html">Service Areas</a></li>
-        <li><a href="${home}">Blog</a></li>
-        <li><a href="${home}#pricing">Contact Us</a></li>
       </ul>
     </div>
     <div>
