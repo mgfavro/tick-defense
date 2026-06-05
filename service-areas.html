@@ -174,36 +174,37 @@
   .link-card-desc { grid-column: 1; font-size: 13px; color: var(--text-muted); line-height: 1.6; margin: 0; }
   .link-card-chev { grid-column: 2; grid-row: 1 / span 2; align-self: center; font-size: 26px; color: var(--green-dark); }
   .footer {
-    background: var(--green-darker); color: rgba(255,255,255,0.8);
-    padding: 50px 32px 28px;
+    background: #fff; color: var(--text-dark);
+    padding: 50px 32px 28px; border-top: 1px solid var(--border);
   }
   .footer-inner {
     max-width: 1280px; margin: 0 auto;
     display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr 1.2fr; gap: 36px;
   }
   .areas-cta {
-    display: inline-block; border: 1px solid rgba(255,255,255,0.4);
-    color: #fff; padding: 8px 14px; font-size: 10px;
+    display: inline-block; border: 1px solid var(--green-dark);
+    color: var(--green-dark); padding: 8px 14px; font-size: 10px;
     letter-spacing: 1.2px; margin-top: 14px; border-radius: 3px;
     text-transform: uppercase; font-weight: 600;
   }
-  .footer .logo-text .l1, .footer .logo-text .l2 { color: #fff; }
-  .footer .logo-text .l3 { color: rgba(255,255,255,0.6); }
+  .footer .logo-text .l1, .footer .logo-text .l2 { color: var(--green-dark); }
+  .footer .logo-text .l3 { color: var(--text-muted); }
   .footer h6 {
     font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
-    color: #fff; margin-bottom: 18px; text-transform: uppercase;
+    color: var(--green-dark); margin-bottom: 18px; text-transform: uppercase;
   }
   .footer ul { list-style: none; }
   .footer li { margin-bottom: 8px; }
   .footer li a {
-    font-size: 12px; color: rgba(255,255,255,0.7);
+    font-size: 12px; color: var(--text-dark);
     display: inline-block;
   }
-  .footer li a:hover { color: #fff; }
+  .footer li a:hover { color: var(--green-dark); }
+  .footer-areas p { color: var(--text-muted) !important; }
   .footer-bottom {
     max-width: 1280px; margin: 36px auto 0; padding-top: 22px;
-    border-top: 1px solid rgba(255,255,255,0.08);
-    font-size: 11px; color: rgba(255,255,255,0.5);
+    border-top: 1px solid var(--border);
+    font-size: 11px; color: var(--text-muted);
   }
   /* ============ MOBILE NAV + ACTION BAR ============ */
   .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 6px; color: var(--green-darker); }
@@ -357,7 +358,7 @@
     <div>
       <a href="index.html" class="logo">
       <div class="logo-mark">
-        <img src="assets/images/logo-footer.png" alt="" class="logo-img" width="72" height="72" />
+        <img src="assets/images/logo.png" alt="" class="logo-img" width="72" height="72" />
       </div>
       <div class="logo-text">
         <span class="l1">NATURAL</span>

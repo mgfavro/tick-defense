@@ -665,10 +665,10 @@
 
   /* Footer */
   .footer {
-    background: var(--green-darker);
-    color: rgba(255,255,255,0.8);
+    background: #fff;
+    color: var(--text-dark);
     padding: 50px 32px 28px;
-    border-top: 1px solid rgba(255,255,255,0.08);
+    border-top: 1px solid var(--border);
   }
   .footer-inner {
     max-width: 1280px; margin: 0 auto;
@@ -677,12 +677,12 @@
     gap: 36px;
   }
   .footer .logo-text .l1,
-  .footer .logo-text .l2 { color: #fff; }
-  .footer .logo-text .l3 { color: rgba(255,255,255,0.6); }
+  .footer .logo-text .l2 { color: var(--green-dark); }
+  .footer .logo-text .l3 { color: var(--text-muted); }
   .footer h6 {
     font-size: 11px; font-weight: 700;
     letter-spacing: 1.5px;
-    color: #fff;
+    color: var(--green-dark);
     margin-bottom: 18px;
     text-transform: uppercase;
   }
@@ -690,15 +690,15 @@
   .footer li { margin-bottom: 8px; }
   .footer li a {
     font-size: 12px;
-    color: rgba(255,255,255,0.7);
+    color: var(--text-dark);
     display: inline-block;
   }
-  .footer li a:hover { color: #fff; }
+  .footer li a:hover { color: var(--green-dark); }
   .socials { display: flex; gap: 8px; margin-top: 18px; }
   .social {
     width: 28px; height: 28px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.1);
+    background: var(--green-dark);
     display: flex; align-items: center; justify-content: center;
     color: #fff;
     font-size: 12px;
@@ -706,10 +706,11 @@
   .footer-areas {
     position: relative;
   }
+  .footer-areas p { color: var(--text-muted) !important; }
   .areas-cta {
     display: inline-block;
-    border: 1px solid rgba(255,255,255,0.4);
-    color: #fff;
+    border: 1px solid var(--green-dark);
+    color: var(--green-dark);
     padding: 8px 14px;
     font-size: 10px;
     letter-spacing: 1.2px;
@@ -725,10 +726,10 @@
   .footer-bottom {
     max-width: 1280px; margin: 36px auto 0;
     padding-top: 22px;
-    border-top: 1px solid rgba(255,255,255,0.08);
+    border-top: 1px solid var(--border);
     display: flex; justify-content: space-between;
     font-size: 11px;
-    color: rgba(255,255,255,0.5);
+    color: var(--text-muted);
   }
   .footer-bottom .links { display: flex; gap: 20px; }
 
@@ -1198,7 +1199,7 @@
     <div>
       <a href="index.html" class="logo">
         <div class="logo-mark">
-          <img src="assets/images/logo-footer.png" alt="" class="logo-img" width="72" height="72" />
+          <img src="assets/images/logo.png" alt="" class="logo-img" width="72" height="72" />
         </div>
         <div class="logo-text">
           <span class="l1">NATURAL</span>
