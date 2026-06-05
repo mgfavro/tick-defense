@@ -444,6 +444,247 @@ const PAGE_STYLES = `
   }
 `;
 
+const FRANCHISE_STYLES = `
+  .page-hero-ctas {
+    margin-top: 28px; display: flex; gap: 14px; flex-wrap: wrap;
+    justify-content: center;
+  }
+  .page-hero .btn-outline {
+    color: #fff; border-color: #fff;
+  }
+  .page-hero .btn-outline:hover {
+    background: rgba(255,255,255,0.15); color: #fff;
+  }
+  .franchise-section {
+    padding: 64px 32px;
+    background: var(--cream-light);
+  }
+  .franchise-section.alt { background: #fff; }
+  .franchise-section-inner {
+    max-width: 960px; margin: 0 auto;
+  }
+  .franchise-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; font-weight: 600; color: var(--green-darker);
+    margin-bottom: 16px; text-align: center;
+  }
+  .franchise-section .lead {
+    font-size: 16px; color: var(--text-muted); line-height: 1.7;
+    text-align: center; max-width: 720px; margin: 0 auto;
+  }
+  .franchise-steps {
+    display: grid; grid-template-columns: 1fr; gap: 20px;
+    margin-top: 40px;
+  }
+  .franchise-step {
+    display: grid; grid-template-columns: 56px 1fr; gap: 20px;
+    align-items: start; background: #fff;
+    border: 1px solid var(--border); border-radius: 8px;
+    padding: 24px 28px;
+  }
+  .franchise-section.alt .franchise-step { background: var(--cream-light); }
+  .franchise-step-num {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--green-dark); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 600; flex-shrink: 0;
+  }
+  .franchise-step h3 {
+    font-size: 14px; font-weight: 700; letter-spacing: 1.2px;
+    text-transform: uppercase; color: var(--green-darker);
+    margin-bottom: 8px;
+  }
+  .franchise-step p {
+    font-size: 15px; color: var(--text-muted); line-height: 1.7; margin: 0;
+  }
+  .franchise-form-section {
+    padding: 64px 32px 80px;
+    background: var(--green-darker); color: #fff;
+  }
+  .franchise-form-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; font-weight: 600; margin-bottom: 12px; text-align: center;
+  }
+  .franchise-form-section .lead {
+    font-size: 15px; color: rgba(255,255,255,0.85);
+    text-align: center; max-width: 560px; margin: 0 auto 32px; line-height: 1.6;
+  }
+  .franchise-form {
+    max-width: 520px; margin: 0 auto;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .franchise-form label {
+    display: flex; flex-direction: column; gap: 6px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.5px;
+    text-transform: uppercase; color: rgba(255,255,255,0.9);
+  }
+  .franchise-form input {
+    padding: 12px 14px; border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 4px; background: rgba(255,255,255,0.08);
+    color: #fff; font-family: inherit; font-size: 15px;
+  }
+  .franchise-form input::placeholder { color: rgba(255,255,255,0.45); }
+  .franchise-form input:focus {
+    outline: 2px solid rgba(255,255,255,0.5); outline-offset: 2px;
+  }
+  .franchise-form .btn { width: 100%; margin-top: 8px; cursor: pointer; border: none; }
+  .franchise-contact {
+    padding: 56px 32px; background: #fff;
+    border-top: 1px solid var(--border); text-align: center;
+  }
+  .franchise-contact h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; font-weight: 600; color: var(--green-darker);
+    margin-bottom: 20px;
+  }
+  .franchise-contact-links {
+    display: flex; flex-wrap: wrap; gap: 24px; justify-content: center;
+    align-items: center;
+  }
+  .franchise-contact-links a {
+    font-size: 14px; font-weight: 600; color: var(--green-dark);
+    letter-spacing: 0.5px;
+  }
+  .franchise-contact-links a:hover { text-decoration: underline; }
+  .franchise-contact-phone {
+    font-size: 16px; font-weight: 600; color: var(--text-dark);
+  }
+  @media (max-width: 600px) {
+    .page-hero h1 { font-size: 36px; }
+    .franchise-step { grid-template-columns: 1fr; text-align: center; }
+    .franchise-step-num { margin: 0 auto; }
+  }
+`;
+
+function franchisePageHtml(depth) {
+  const b = base(depth);
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Franchise Opportunities — Natural Tick Defense</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>${PAGE_STYLES}${FRANCHISE_STYLES}</style>
+</head>
+<body>
+<!--
+  INTERNAL NOTE (not rendered): Owner to supply final investment figures, real
+  territory info, photos, and video before launch. Do NOT publish invented
+  dollar amounts, ROI claims, or earnings figures.
+-->
+${headerHtml(depth)}
+${mobileMenuHtml(depth)}
+
+<!-- PLACEHOLDER FRANCHISE COPY — replace once owner provides final details -->
+
+<section class="page-hero">
+  <h1>Own a Natural Tick Defense Franchise</h1>
+  <p>Build a business protecting families, pets, and the outdoors with eco-conscious tick and mosquito control.</p>
+  <div class="page-hero-ctas">
+    <a href="#guide" class="btn btn-primary">Download the Guide</a>
+    <a href="#" class="btn btn-outline">Schedule a Call</a>
+  </div>
+</section>
+
+<section class="franchise-section">
+  <div class="franchise-section-inner">
+    <h2>How to Start a Natural Tick Defense Franchise</h2>
+    <p class="lead">Your path to ownership starts with a straightforward, no-pressure evaluation process designed to give you everything you need to make a confident decision. We'll walk alongside you at every stage.</p>
+  </div>
+</section>
+
+<section class="franchise-section alt">
+  <div class="franchise-section-inner">
+    <h2>Steps to Ownership</h2>
+    <div class="franchise-steps">
+      <article class="franchise-step">
+        <div class="franchise-step-num" aria-hidden="true">1</div>
+        <div>
+          <h3>Download the Franchise Guide</h3>
+          <p>Get the full picture: business overview, investment details, market demand, the training and support we provide, and who makes an ideal owner.</p>
+        </div>
+      </article>
+      <article class="franchise-step">
+        <div class="franchise-step-num" aria-hidden="true">2</div>
+        <div>
+          <h3>Talk With Our Team</h3>
+          <p>After you reach out, a franchise representative will connect with you to answer questions, review territory availability in your area, and explore whether this is the right fit.</p>
+        </div>
+      </article>
+      <article class="franchise-step">
+        <div class="franchise-step-num" aria-hidden="true">3</div>
+        <div>
+          <h3>Do Your Research</h3>
+          <p>Dig deeper with a territory analysis and the chance to speak with current owners. This is a big decision and we want you to make it with full confidence.</p>
+        </div>
+      </article>
+      <article class="franchise-step">
+        <div class="franchise-step-num" aria-hidden="true">4</div>
+        <div>
+          <h3>Meet the Team</h3>
+          <p>Qualified candidates are invited to spend time with our leadership to see the business model up close — operations, technology, marketing, and territory planning.</p>
+        </div>
+      </article>
+      <article class="franchise-step">
+        <div class="franchise-step-num" aria-hidden="true">5</div>
+        <div>
+          <h3>Training &amp; Launch</h3>
+          <p>Once you're on board, you'll complete our onboarding and training program and build a local marketing plan, with dedicated support through your first year.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="franchise-form-section" id="guide">
+  <div class="franchise-section-inner">
+    <h2>Start Your Journey</h2>
+    <p class="lead">Complete the form to download the Franchise Guide. A member of our team will be in touch.</p>
+    <!-- TODO: wire to GHL/Jobber webhook -->
+    <form class="franchise-form" action="#" method="post" aria-label="Franchise guide request" onsubmit="event.preventDefault();">
+      <label>
+        Name
+        <input type="text" name="name" autocomplete="name" placeholder="Your full name" required />
+      </label>
+      <label>
+        Email
+        <input type="email" name="email" autocomplete="email" placeholder="you@example.com" required />
+      </label>
+      <label>
+        Phone
+        <input type="tel" name="phone" autocomplete="tel" placeholder="(555) 555-5555" />
+      </label>
+      <label>
+        Location
+        <input type="text" name="location" autocomplete="address-level2" placeholder="City, State" />
+      </label>
+      <button type="submit" class="btn btn-primary">Download the Guide</button>
+    </form>
+  </div>
+</section>
+
+<section class="franchise-contact">
+  <h2>We're Here to Help</h2>
+  <div class="franchise-contact-links">
+    <span class="franchise-contact-phone"><a href="#">(703) 000-0000</a></span>
+    <a href="#">Contact Us</a>
+    <a href="#">Schedule a Call</a>
+  </div>
+</section>
+
+<!-- END PLACEHOLDER FRANCHISE COPY -->
+
+${footerHtml(depth)}
+${mobileBarHtml(depth)}
+${NAV_SCRIPT}
+</body>
+</html>`;
+}
+
 function pageHtml({ depth, title, heroTitle, heroIntro, body, backHref, backLabel }) {
   const b = base(depth);
   const backLink = backHref
@@ -604,26 +845,6 @@ write(
   })
 );
 
-write(
-  path.join(root, 'franchise-opportunities.html'),
-  pageHtml({
-    depth: 0,
-    title: 'Franchise Opportunities',
-    heroTitle: 'Franchise Opportunities',
-    heroIntro: 'Build a business around natural outdoor protection. Bring Natural Tick Defense to your community.',
-    body: `<p>Natural Tick Defense is growing, and we're looking for motivated owner-operators who want to deliver natural-based tick, mosquito, and outdoor pest protection in their local markets.</p>
-      <h2>Why franchise with us</h2>
-      <ul>
-        <li>A proven, natural-based service model families and pet owners trust</li>
-        <li>Recurring revenue through seasonal and monthly protection plans</li>
-        <li>Training, branding, and marketing support to get you started</li>
-        <li>Protected territories with strong demand for outdoor pest control</li>
-      </ul>
-      <h2>Who we're looking for</h2>
-      <p>Whether you're an entrepreneur entering the home-services space or an existing operator looking to add a high-demand offering, we'd love to talk. No prior pest-control experience is required—just a commitment to great service and your community.</p>
-      <h2>Let's connect</h2>
-      <p>Tell us about yourself and the area you'd like to serve, and our team will reach out with the next steps.</p>`,
-  })
-);
+write(path.join(root, 'franchise-opportunities.html'), franchisePageHtml(0));
 
 console.log('Built', SERVICES.length + RESOURCES.length + 4, 'landing pages.');
