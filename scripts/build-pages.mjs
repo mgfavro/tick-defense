@@ -819,9 +819,9 @@ write(
     title: 'Service Areas',
     heroTitle: 'Service Areas',
     heroIntro: 'Proudly serving Northern Virginia homeowners, estates, and commercial properties.',
-    body: `<p>Natural Tick Defense provides tick, mosquito, and outdoor pest protection throughout Northern Virginia. If you don't see your town listed, contact us—we may still serve your area.</p>
+    body: `<p>Natural Tick Defense provides tick, mosquito, and outdoor pest protection throughout Northern Virginia. If you don't see your county listed, contact us—we may still serve your area.</p>
       <div class="areas-grid">${areasCards}</div>
-      <p style="margin-top:28px">Don't see your area? Call us to confirm coverage for your property.</p>`,
+      <p style="margin-top:28px">Don't see your area and interested in coverage? Please email us at <a href="mailto:info@naturaltickdefense.com">info@naturaltickdefense.com</a></p>`,
   })
 );
 
