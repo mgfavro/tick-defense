@@ -28,20 +28,12 @@ function logoBlock(depth, variant = 'header') {
 function navHtml(depth) {
   const b = base(depth);
   const home = `${b}index.html`;
-  const resourceLinks = RESOURCES.map(
-    (r) => `<a href="${b}resources/${r.slug}.html">${r.title}</a>`
-  ).join('\n          ');
 
   return `    <nav class="nav">
       <a href="${home}#how">How It Works</a>
       <a href="${home}#pricing">Plans &amp; Pricing</a>
       <a href="${home}#services">Services</a>
-      <div class="nav-dropdown">
-        <button type="button" class="nav-dropdown-trigger" aria-haspopup="true">Resources <span class="caret">▾</span></button>
-        <div class="nav-dropdown-menu">
-          ${resourceLinks}
-        </div>
-      </div>
+      <a href="${b}my-story.html">My Story</a>
       <a href="${b}service-areas.html">Service Areas</a>
     </nav>`;
 }
@@ -88,7 +80,7 @@ function mobileMenuHtml(depth) {
     <a href="${b}services/hoa-commercial.html">Commercial &amp; HOA <span class="chev">&rsaquo;</span></a>
     <a href="${home}#how">How It Works <span class="chev">&rsaquo;</span></a>
     <a href="${b}franchise-opportunities.html">Franchise Opportunities <span class="chev">&rsaquo;</span></a>
-    <a href="${b}resources.html">Resources <span class="chev">&rsaquo;</span></a>
+    <a href="${b}my-story.html">My Story <span class="chev">&rsaquo;</span></a>
     <a href="${b}service-areas.html">Service Areas <span class="chev">&rsaquo;</span></a>
     <a href="${home}#pricing">Contact Us <span class="chev">&rsaquo;</span></a>
   </nav>
@@ -145,9 +137,9 @@ ${logoBlock(depth, 'footer')}
       </ul>
     </div>
     <div>
-      <h6>Resources</h6>
+      <h6>My Story</h6>
       <ul>
-        ${RESOURCES.map((r) => `<li><a href="${b}resources/${r.slug}.html">${r.title}</a></li>`).join('\n        ')}
+        <li><a href="${b}my-story.html">From the Founder</a></li>
       </ul>
     </div>
     <div class="footer-areas">
@@ -335,6 +327,18 @@ const PAGE_STYLES = `
   }
   .page-content ul { margin: 0 0 20px 20px; }
   .page-cta { margin-top: 36px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .story-closing {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px; font-weight: 600;
+    color: var(--green-darker);
+    margin: 40px 0 12px;
+    text-align: center;
+  }
+  .story-signature {
+    font-size: 15px; color: var(--text-muted);
+    text-align: center; line-height: 1.7;
+    margin-bottom: 0;
+  }
   .areas-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -724,6 +728,20 @@ ${NAV_SCRIPT}
 </html>`;
 }
 
+function myStoryBody() {
+  return `<p>It was just another evening in my backyard in Haymarket, Virginia. My son, my dog, and I were outside enjoying the fresh air. My son was playing, my dog was running through the yard, and it felt like the perfect way to end the day. None of us noticed the tiny tick hidden in the grass. I never felt it bite me, and I had no idea that one tiny insect was about to change everything.</p>
+    <p>A few days later, I found the tick attached to my skin and removed it, thinking little of it. But over the following weeks, I began feeling exhausted. Headaches became more frequent, my muscles and joints ached, and I simply didn't feel like myself. I brushed it off as stress and long days, but the symptoms only became worse.</p>
+    <p>Concerned, I went to the hospital. Doctors examined me, asked about the tick bite, and ordered blood work. They explained that many tick-borne illnesses don't always show up immediately on tests, so I was sent home and told to closely monitor my symptoms.</p>
+    <p>Unfortunately, things continued to decline.</p>
+    <p>Over the next several weeks, I made multiple trips back to the hospital and my doctor's office. More blood was drawn. More tests were ordered. More questions were asked. Doctors evaluated me for several tick-borne illnesses while I waited anxiously for answers. Every visit brought uncertainty, and every new symptom reminded me that something so small could have such a major impact on my life.</p>
+    <p>Thankfully, with continued medical care, treatment, and follow-up, I began to recover. But the experience changed the way I look at my own backyard forever.</p>
+    <p>The hardest part wasn't just wondering what was happening to me—it was realizing that the same yard where my son played and my dog ran every day could expose the people I love most to the very same danger.</p>
+    <p>That experience became the inspiration behind Natural Tick Defense. I never wanted another family to go through the fear, uncertainty, and countless medical visits that can follow a single tick bite. My mission is simple: help families reclaim their backyards with a safer, natural approach to tick and mosquito control.</p>
+    <p>A tick doesn't care if you're mowing the lawn, playing catch with your child, or watching your dog chase a ball. It only takes one bite.</p>
+    <p class="story-closing">Defend Your Yard.</p>
+    <p class="story-signature">— Reese Gardner<br/>Founder, Natural Tick Defense</p>`;
+}
+
 function serviceBody(s) {
   return `<p>${s.intro}</p>
     <h2>How we protect your property</h2>
@@ -783,30 +801,20 @@ for (const r of RESOURCES) {
       heroTitle: r.title,
       heroIntro: r.intro,
       body: resourceBody(r),
-      backHref: `${base(1)}resources.html`,
-      backLabel: 'Back to Resources',
+      backHref: `${base(1)}my-story.html`,
+      backLabel: 'Back to My Story',
     })
   );
 }
 
-const resourceCards = RESOURCES.map(
-  (r) => `<a class="link-card" href="resources/${r.slug}.html">
-        <span class="link-card-title">${r.title}</span>
-        <span class="link-card-desc">${r.intro}</span>
-        <span class="link-card-chev" aria-hidden="true">&rsaquo;</span>
-      </a>`
-).join('\n      ');
-
 write(
-  path.join(root, 'resources.html'),
+  path.join(root, 'my-story.html'),
   pageHtml({
     depth: 0,
-    title: 'Resources',
-    heroTitle: 'Resources',
-    heroIntro: 'Tips and guides to help you protect your yard, family, and pets all season long.',
-    body: `<div class="link-cards">
-      ${resourceCards}
-    </div>`,
+    title: 'My Story',
+    heroTitle: 'From the Founder, Reese Gardner',
+    heroIntro: 'One Tick. One Bite. A Summer Changed.',
+    body: myStoryBody(),
   })
 );
 
