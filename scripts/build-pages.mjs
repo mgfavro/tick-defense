@@ -804,10 +804,13 @@ ${FRANCHISE_FORM_SCRIPT}
 </html>`;
 }
 
-function pageHtml({ depth, title, heroTitle, heroIntro, body, backHref, backLabel }) {
+function pageHtml({ depth, title, heroTitle, heroIntro, body, backHref, backLabel, showViewPricing = true }) {
   const b = base(depth);
   const backLink = backHref
     ? `<a href="${backHref}" class="page-back"><span aria-hidden="true">&lsaquo;</span> ${backLabel}</a>\n    `
+    : '';
+  const viewPricingBtn = showViewPricing
+    ? `\n      <a href="${b}index.html#pricing" class="btn btn-outline">View Pricing</a>`
     : '';
   return `<!DOCTYPE html>
 <html lang="en">
@@ -831,8 +834,7 @@ ${mobileMenuHtml(depth)}
   <div class="page-content-inner">
     ${backLink}${body}
     <div class="page-cta">
-      <a href="${b}index.html#pricing" class="btn btn-primary">Choose My Plan</a>
-      <a href="${b}index.html#pricing" class="btn btn-outline">View Pricing</a>
+      <a href="${b}index.html#pricing" class="btn btn-primary">Choose My Plan</a>${viewPricingBtn}
     </div>
   </div>
 </section>
@@ -930,6 +932,7 @@ write(
     heroTitle: 'From the Founder, Reese Gardner',
     heroIntro: 'One Tick. One Bite. A Summer Changed.',
     body: myStoryBody(),
+    showViewPricing: false,
   })
 );
 
@@ -945,6 +948,7 @@ write(
     body: `<p>Natural Tick Defense provides tick, mosquito, and outdoor pest protection throughout Northern Virginia. If you don't see your county listed, contact us—we may still serve your area.</p>
       <div class="areas-grid">${areasCards}</div>
       <p style="margin-top:28px">Don't see your area and interested in coverage? Please email us at <a href="mailto:info@naturaltickdefense.com">info@naturaltickdefense.com</a></p>`,
+    showViewPricing: false,
   })
 );
 
