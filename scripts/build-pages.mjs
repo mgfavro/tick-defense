@@ -429,11 +429,11 @@ ${HEADER_STYLES}
     font-size: 32px; font-weight: 600;
     color: var(--green-darker);
     margin: 40px 0 12px;
-    text-align: center;
+    text-align: left;
   }
   .story-signature {
     font-size: 15px; color: var(--text-muted);
-    text-align: center; line-height: 1.7;
+    text-align: left; line-height: 1.7;
     margin-bottom: 0;
   }
   .areas-grid {
@@ -768,60 +768,6 @@ ${mobileMenuHtml()}
 <section class="page-hero">
   <h1>Own a Natural Tick Defense Franchise</h1>
   <p>Build a business protecting families, pets, and the outdoors with eco-conscious tick and mosquito control.</p>
-  <div class="page-hero-ctas">
-    <a href="#guide" class="btn btn-primary">Download the Guide</a>
-    <a href="#" class="btn btn-outline">Schedule a Call</a>
-  </div>
-</section>
-
-<section class="franchise-section">
-  <div class="franchise-section-inner">
-    <h2>How to Start a Natural Tick Defense Franchise</h2>
-    <p class="lead">Your path to ownership starts with a straightforward, no-pressure evaluation process designed to give you everything you need to make a confident decision. We'll walk alongside you at every stage.</p>
-  </div>
-</section>
-
-<section class="franchise-section alt">
-  <div class="franchise-section-inner">
-    <h2>Steps to Ownership</h2>
-    <div class="franchise-steps">
-      <article class="franchise-step">
-        <div class="franchise-step-num" aria-hidden="true">1</div>
-        <div>
-          <h3>Download the Franchise Guide</h3>
-          <p>Get the full picture: business overview, investment details, market demand, the training and support we provide, and who makes an ideal owner.</p>
-        </div>
-      </article>
-      <article class="franchise-step">
-        <div class="franchise-step-num" aria-hidden="true">2</div>
-        <div>
-          <h3>Talk With Our Team</h3>
-          <p>After you reach out, a franchise representative will connect with you to answer questions, review territory availability in your area, and explore whether this is the right fit.</p>
-        </div>
-      </article>
-      <article class="franchise-step">
-        <div class="franchise-step-num" aria-hidden="true">3</div>
-        <div>
-          <h3>Do Your Research</h3>
-          <p>Dig deeper with a territory analysis and the chance to speak with current owners. This is a big decision and we want you to make it with full confidence.</p>
-        </div>
-      </article>
-      <article class="franchise-step">
-        <div class="franchise-step-num" aria-hidden="true">4</div>
-        <div>
-          <h3>Meet the Team</h3>
-          <p>Qualified candidates are invited to spend time with our leadership to see the business model up close — operations, technology, marketing, and territory planning.</p>
-        </div>
-      </article>
-      <article class="franchise-step">
-        <div class="franchise-step-num" aria-hidden="true">5</div>
-        <div>
-          <h3>Training &amp; Launch</h3>
-          <p>Once you're on board, you'll complete our onboarding and training program and build a local marketing plan, with dedicated support through your first year.</p>
-        </div>
-      </article>
-    </div>
-  </div>
 </section>
 
 <section class="franchise-form-section" id="guide">
@@ -881,8 +827,6 @@ ${mobileMenuHtml()}
   <h2>We're Here to Help</h2>
   <div class="franchise-contact-links">
     <span class="franchise-contact-phone">Customer Support: <a href="tel:+15406809693">(540) 680-9693</a></span>
-    <a href="#">Contact Us</a>
-    <a href="#">Schedule a Call</a>
   </div>
 </section>
 
@@ -896,12 +840,17 @@ ${FRANCHISE_FORM_SCRIPT}
 </html>`;
 }
 
-function pageHtml({ title, heroTitle, heroIntro, body, backHref, backLabel, showViewPricing = true }) {
+function pageHtml({ title, heroTitle, heroIntro, body, backHref, backLabel, showViewPricing = true, showPageCta = true }) {
   const backLink = backHref
     ? `<a href="${backHref}" class="page-back"><span aria-hidden="true">&lsaquo;</span> ${backLabel}</a>\n    `
     : '';
   const viewPricingBtn = showViewPricing
     ? `\n      <a href="${siteUrl('index.html#pricing')}" class="btn btn-outline">View Pricing</a>`
+    : '';
+  const pageCta = showPageCta
+    ? `    <div class="page-cta">
+      <a href="${siteUrl('index.html#pricing')}" class="btn btn-primary">Choose My Plan</a>${viewPricingBtn}
+    </div>`
     : '';
   return `<!DOCTYPE html>
 <html lang="en">
@@ -924,9 +873,7 @@ ${mobileMenuHtml()}
 <section class="page-content">
   <div class="page-content-inner">
     ${backLink}${body}
-    <div class="page-cta">
-      <a href="${siteUrl('index.html#pricing')}" class="btn btn-primary">Choose My Plan</a>${viewPricingBtn}
-    </div>
+${pageCta}
   </div>
 </section>
 ${footerHtml()}
@@ -1243,6 +1190,7 @@ write(
     heroIntro: 'One Tick. One Bite. A Summer Changed.',
     body: myStoryBody(),
     showViewPricing: false,
+    showPageCta: false,
   })
 );
 
