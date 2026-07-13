@@ -1164,6 +1164,7 @@ for (const s of SERVICES) {
       body: serviceBody(s),
       backHref: siteUrl('index.html#services'),
       backLabel: 'Back to Services',
+      showViewPricing: false,
     })
   );
 }
