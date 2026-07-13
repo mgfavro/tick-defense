@@ -6,17 +6,20 @@ import { SERVICES, RESOURCES, SERVICE_AREAS } from './site-data.mjs';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, '..');
 
-function base(depth) {
-  return depth ? '../'.repeat(depth) : '';
+function siteUrl(path) {
+  const hashIdx = path.indexOf('#');
+  if (hashIdx === -1) return '/' + path.replace(/^\//, '');
+  const pathname = path.slice(0, hashIdx);
+  const hash = path.slice(hashIdx);
+  return '/' + pathname.replace(/^\//, '') + hash;
 }
 
-function logoBlock(depth, variant = 'header') {
-  const b = base(depth);
+function logoBlock(variant = 'header') {
   const file = 'logo.png';
   const markClass = 'logo-mark';
-  const size = variant === 'footer' ? 72 : 68;
+  const size = variant === 'footer' ? 72 : 70;
   return `      <div class="${markClass}">
-        <img src="${b}assets/images/${file}" alt="" class="logo-img" width="${size}" height="${size}" />
+        <img src="${siteUrl(`assets/images/${file}`)}" alt="" class="logo-img" width="${size}" height="${size}" />
       </div>
       <div class="logo-text">
         <span class="l1">NATURAL</span>
@@ -25,30 +28,28 @@ function logoBlock(depth, variant = 'header') {
       </div>`;
 }
 
-function navHtml(depth) {
-  const b = base(depth);
-  const home = `${b}index.html`;
+function navHtml() {
+  const home = siteUrl('index.html');
 
   return `    <nav class="nav">
       <a href="${home}#how">How It Works</a>
       <a href="${home}#pricing">Plans &amp; Pricing</a>
       <a href="${home}#services">Services</a>
-      <a href="${b}my-story.html">My Story</a>
-      <a href="${b}service-areas.html">Service Areas</a>
+      <a href="${siteUrl('my-story.html')}">My Story</a>
+      <a href="${siteUrl('service-areas.html')}">Service Areas</a>
     </nav>`;
 }
 
-function headerHtml(depth) {
-  const b = base(depth);
+function headerHtml() {
   return `<header class="site-header">
   <div class="header-inner">
-    <a href="${b}index.html" class="logo">
-${logoBlock(depth)}
+    <a href="${siteUrl('index.html')}" class="logo">
+${logoBlock()}
     </a>
-${navHtml(depth)}
+${navHtml()}
     <div class="header-actions">
-      <a href="${b}index.html#pricing" class="btn btn-primary">Choose My Plan</a>
-      <a href="${b}franchise-opportunities.html" class="franchise-link">Franchise Opportunities</a>
+      <a href="${siteUrl('index.html#pricing')}" class="btn btn-primary">Choose My Plan</a>
+      <a href="${siteUrl('franchise-opportunities.html')}" class="franchise-link">Franchise Opportunities</a>
     </div>
     <button type="button" class="menu-toggle" aria-label="Open menu" aria-expanded="false">
       <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
@@ -57,13 +58,12 @@ ${navHtml(depth)}
 </header>`;
 }
 
-function mobileMenuHtml(depth) {
-  const b = base(depth);
-  const home = `${b}index.html`;
+function mobileMenuHtml() {
+  const home = siteUrl('index.html');
   return `<div class="mobile-menu" id="mobileMenu">
   <div class="mobile-menu-head">
     <div class="logo">
-      <div class="logo-mark"><img src="${b}assets/images/logo-footer.png" alt="" class="logo-img" width="52" height="52" /></div>
+      <div class="logo-mark"><img src="${siteUrl('assets/images/logo-footer.png')}" alt="" class="logo-img" width="52" height="52" /></div>
       <div class="logo-text">
         <span class="l1">NATURAL</span>
         <span class="l2">TICK DEFENSE</span>
@@ -77,11 +77,11 @@ function mobileMenuHtml(depth) {
   <nav class="mobile-menu-links">
     <a href="${home}#pricing">Plans &amp; Pricing <span class="chev">&rsaquo;</span></a>
     <a href="${home}#services">Services <span class="chev">&rsaquo;</span></a>
-    <a href="${b}services/hoa-commercial.html">Commercial &amp; HOA <span class="chev">&rsaquo;</span></a>
+    <a href="${siteUrl('services/hoa-commercial.html')}">Commercial &amp; HOA <span class="chev">&rsaquo;</span></a>
     <a href="${home}#how">How It Works <span class="chev">&rsaquo;</span></a>
-    <a href="${b}franchise-opportunities.html">Franchise Opportunities <span class="chev">&rsaquo;</span></a>
-    <a href="${b}my-story.html">My Story <span class="chev">&rsaquo;</span></a>
-    <a href="${b}service-areas.html">Service Areas <span class="chev">&rsaquo;</span></a>
+    <a href="${siteUrl('franchise-opportunities.html')}">Franchise Opportunities <span class="chev">&rsaquo;</span></a>
+    <a href="${siteUrl('my-story.html')}">My Story <span class="chev">&rsaquo;</span></a>
+    <a href="${siteUrl('service-areas.html')}">Service Areas <span class="chev">&rsaquo;</span></a>
     <a href="${home}#pricing">Contact Us <span class="chev">&rsaquo;</span></a>
   </nav>
   <div class="mobile-menu-trust">
@@ -91,9 +91,8 @@ function mobileMenuHtml(depth) {
 </div>`;
 }
 
-function mobileBarHtml(depth) {
-  const b = base(depth);
-  const home = `${b}index.html`;
+function mobileBarHtml() {
+  const home = siteUrl('index.html');
   return `<nav class="mobile-bar" aria-label="Quick actions">
   <a href="tel:+17036222450">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.69 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.56 2.81.69A2 2 0 0 1 22 16.92z"/></svg>
@@ -114,38 +113,37 @@ function mobileBarHtml(depth) {
 </nav>`;
 }
 
-function footerHtml(depth) {
-  const b = base(depth);
-  const home = `${b}index.html`;
+function footerHtml() {
+  const home = siteUrl('index.html');
   return `<footer class="footer">
   <div class="footer-inner">
     <div>
       <a href="${home}" class="logo">
-${logoBlock(depth, 'footer')}
+${logoBlock('footer')}
       </a>
     </div>
     <div>
       <h6>Services</h6>
       <ul>
-        ${SERVICES.map((s) => `<li><a href="${b}services/${s.slug}.html">${s.title}</a></li>`).join('\n        ')}
+        ${SERVICES.map((s) => `<li><a href="${siteUrl(`services/${s.slug}.html`)}">${s.title}</a></li>`).join('\n        ')}
       </ul>
     </div>
     <div>
       <h6>Company</h6>
       <ul>
-        <li><a href="${b}franchise-opportunities.html">Franchise Opportunities</a></li>
+        <li><a href="${siteUrl('franchise-opportunities.html')}">Franchise Opportunities</a></li>
       </ul>
     </div>
     <div>
       <h6>My Story</h6>
       <ul>
-        <li><a href="${b}my-story.html">From the Founder</a></li>
+        <li><a href="${siteUrl('my-story.html')}">From the Founder</a></li>
       </ul>
     </div>
     <div class="footer-areas">
       <h6>Service Areas</h6>
       <p style="font-size:12px; color:rgba(255,255,255,0.7); margin-bottom:10px;">Proudly serving Northern Virginia</p>
-      <a href="${b}service-areas.html" class="areas-cta">View All Areas →</a>
+      <a href="${siteUrl('service-areas.html')}" class="areas-cta">View All Areas →</a>
     </div>
   </div>
   <div class="footer-bottom">
@@ -191,59 +189,69 @@ const NAV_SCRIPT = `<script>
 })();
 </script>`;
 
-const PAGE_STYLES = `
-  :root {
-    --green-dark: #1f3a26;
-    --green-darker: #15291a;
-    --cream-light: #faf7f0;
-    --text-dark: #1a2e1f;
-    --text-muted: #5a6b5e;
-    --border: #d9d2c2;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    color: var(--text-dark);
-    background: var(--cream-light);
-    line-height: 1.5;
-  }
-  a { color: inherit; text-decoration: none; }
+const HEADER_STYLES = `
   .site-header {
     background: var(--cream-light);
-    border-bottom: 1px solid rgba(0,0,0,0.04);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.18);
     position: sticky; top: 0; z-index: 200;
   }
   .header-inner {
-    max-width: 1280px; margin: 0 auto;
-    padding: 18px 32px;
+    max-width: 1600px; margin: 0 auto;
+    padding: 14px 40px;
     display: flex; align-items: center; justify-content: space-between;
     gap: 24px;
   }
   .logo { display: flex; align-items: center; gap: 12px; }
   .logo-mark {
-    width: 68px; height: 68px; flex-shrink: 0;
+    width: 70px; height: 70px;
+    flex-shrink: 0;
     display: flex; align-items: center; justify-content: center;
-    background: transparent; border: none;
+    background: transparent;
+    border: none;
   }
-  .logo-mark .logo-img { width: 100%; height: 100%; object-fit: contain; display: block; }
-  .logo-text .l1, .logo-text .l2 {
+  .logo-mark .logo-img {
+    width: 100%; height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  .logo-text { line-height: 1; }
+  .logo-text .l1 {
     font-family: 'Playfair Display', serif;
-    font-size: 18px; font-weight: 700; color: var(--green-dark);
+    font-size: 20px; font-weight: 700;
+    color: var(--green-dark); letter-spacing: 0.5px;
   }
-  .logo-text .l2 { display: block; margin-top: 2px; }
+  .logo-text .l2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 700;
+    color: var(--green-dark); letter-spacing: 0.5px;
+    display: block; margin-top: 2px;
+  }
   .logo-text .l3 {
-    font-size: 8px; font-weight: 600; color: var(--text-muted);
-    letter-spacing: 1.5px; display: block; margin-top: 4px;
+    font-size: 10px; font-weight: 600;
+    color: var(--text-muted); letter-spacing: 1.5px;
+    display: block; margin-top: 4px;
   }
-  .nav { display: flex; align-items: center; gap: 32px; }
-  .nav > a, .nav-dropdown-trigger {
-    font-size: 14px; font-weight: 500; color: var(--text-dark);
-    line-height: 1; margin: 0; vertical-align: middle;
+  .nav { display: flex; align-items: center; gap: 26px; flex-shrink: 1; min-width: 0; }
+  .nav > a,
+  .nav-dropdown-trigger {
+    font-size: 15px; font-weight: 500;
+    line-height: 1; margin: 0;
+    color: var(--text-dark);
     display: inline-flex; align-items: center; gap: 4px;
-    background: none; border: none; cursor: pointer; font-family: inherit; padding: 0;
+    background: none; border: none; cursor: pointer;
+    font-family: inherit; padding: 0;
+    vertical-align: middle;
+    white-space: nowrap;
   }
-  .nav > a:hover, .nav-dropdown-trigger:hover { color: var(--green-dark); }
-  .caret { font-size: 14px; line-height: 1; margin-left: 2px; }
+  .nav > a:hover,
+  .nav-dropdown-trigger:hover { color: var(--green-dark); }
+  .caret { font-size: 13px; line-height: 1; margin-left: 2px; }
+  .site-header .btn {
+    padding: 11px 22px;
+    font-size: 14px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
   .header-actions { display: flex; align-items: center; gap: 20px; flex-shrink: 0; }
   .franchise-link {
     font-size: 13px; font-weight: 600; letter-spacing: 0.5px;
@@ -268,8 +276,29 @@ const PAGE_STYLES = `
   }
   .nav-dropdown-menu a {
     display: block; padding: 10px 18px; font-size: 13px; font-weight: 500;
+    color: var(--text-dark);
   }
-  .nav-dropdown-menu a:hover { background: #f5f1e8; color: var(--green-dark); }
+  .nav-dropdown-menu a:hover { background: var(--cream-light); color: var(--green-dark); }
+`;
+
+const PAGE_STYLES = `
+  :root {
+    --green-dark: #1f3a26;
+    --green-darker: #15291a;
+    --cream-light: #faf7f0;
+    --text-dark: #1a2e1f;
+    --text-muted: #5a6b5e;
+    --border: #d9d2c2;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--text-dark);
+    background: var(--cream-light);
+    line-height: 1.5;
+  }
+  a { color: inherit; text-decoration: none; }
+${HEADER_STYLES}
   .btn {
     display: inline-block; padding: 14px 28px; border-radius: 4px;
     font-size: 13px; font-weight: 600; letter-spacing: 1px;
@@ -440,6 +469,12 @@ const PAGE_STYLES = `
 
   @media (max-width: 1024px) {
     .nav { display: none; }
+    .header-inner { padding: 14px 24px; }
+    .logo-mark { width: 62px; height: 62px; }
+    .logo-text .l1, .logo-text .l2 { font-size: 18px; }
+    .logo-text .l3 { font-size: 9px; }
+    .nav > a, .nav-dropdown-trigger { font-size: 14px; }
+    .site-header .btn { padding: 11px 20px; font-size: 13px; }
     .menu-toggle { display: inline-flex; }
     .header-actions { display: none; }
     .mobile-menu { display: flex; }
@@ -639,8 +674,7 @@ const FRANCHISE_FORM_SCRIPT = `<script>
 })();
 </script>`;
 
-function franchisePageHtml(depth) {
-  const b = base(depth);
+function franchisePageHtml() {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -658,8 +692,8 @@ function franchisePageHtml(depth) {
   territory info, photos, and video before launch. Do NOT publish invented
   dollar amounts, ROI claims, or earnings figures.
 -->
-${headerHtml(depth)}
-${mobileMenuHtml(depth)}
+${headerHtml()}
+${mobileMenuHtml()}
 
 <!-- PLACEHOLDER FRANCHISE COPY — replace once owner provides final details -->
 
@@ -796,21 +830,20 @@ ${mobileMenuHtml(depth)}
 
 <!-- END PLACEHOLDER FRANCHISE COPY -->
 
-${footerHtml(depth)}
-${mobileBarHtml(depth)}
+${footerHtml()}
+${mobileBarHtml()}
 ${NAV_SCRIPT}
 ${FRANCHISE_FORM_SCRIPT}
 </body>
 </html>`;
 }
 
-function pageHtml({ depth, title, heroTitle, heroIntro, body, backHref, backLabel, showViewPricing = true }) {
-  const b = base(depth);
+function pageHtml({ title, heroTitle, heroIntro, body, backHref, backLabel, showViewPricing = true }) {
   const backLink = backHref
     ? `<a href="${backHref}" class="page-back"><span aria-hidden="true">&lsaquo;</span> ${backLabel}</a>\n    `
     : '';
   const viewPricingBtn = showViewPricing
-    ? `\n      <a href="${b}index.html#pricing" class="btn btn-outline">View Pricing</a>`
+    ? `\n      <a href="${siteUrl('index.html#pricing')}" class="btn btn-outline">View Pricing</a>`
     : '';
   return `<!DOCTYPE html>
 <html lang="en">
@@ -824,8 +857,8 @@ function pageHtml({ depth, title, heroTitle, heroIntro, body, backHref, backLabe
 <style>${PAGE_STYLES}</style>
 </head>
 <body>
-${headerHtml(depth)}
-${mobileMenuHtml(depth)}
+${headerHtml()}
+${mobileMenuHtml()}
 <section class="page-hero">
   <h1>${heroTitle}</h1>
   <p>${heroIntro}</p>
@@ -834,12 +867,12 @@ ${mobileMenuHtml(depth)}
   <div class="page-content-inner">
     ${backLink}${body}
     <div class="page-cta">
-      <a href="${b}index.html#pricing" class="btn btn-primary">Choose My Plan</a>${viewPricingBtn}
+      <a href="${siteUrl('index.html#pricing')}" class="btn btn-primary">Choose My Plan</a>${viewPricingBtn}
     </div>
   </div>
 </section>
-${footerHtml(depth)}
-${mobileBarHtml(depth)}
+${footerHtml()}
+${mobileBarHtml()}
 ${NAV_SCRIPT}
 </body>
 </html>`;
@@ -898,12 +931,11 @@ for (const s of SERVICES) {
   write(
     path.join(root, 'services', `${s.slug}.html`),
     pageHtml({
-      depth: 1,
       title: s.title,
       heroTitle: s.title,
       heroIntro: s.intro,
       body: serviceBody(s),
-      backHref: `${base(1)}index.html#services`,
+      backHref: siteUrl('index.html#services'),
       backLabel: 'Back to Services',
     })
   );
@@ -913,12 +945,11 @@ for (const r of RESOURCES) {
   write(
     path.join(root, 'resources', `${r.slug}.html`),
     pageHtml({
-      depth: 1,
       title: r.title,
       heroTitle: r.title,
       heroIntro: r.intro,
       body: resourceBody(r),
-      backHref: `${base(1)}my-story.html`,
+      backHref: siteUrl('my-story.html'),
       backLabel: 'Back to My Story',
     })
   );
@@ -927,7 +958,6 @@ for (const r of RESOURCES) {
 write(
   path.join(root, 'my-story.html'),
   pageHtml({
-    depth: 0,
     title: 'My Story',
     heroTitle: 'From the Founder, Reese Gardner',
     heroIntro: 'One Tick. One Bite. A Summer Changed.',
@@ -941,7 +971,6 @@ const areasCards = SERVICE_AREAS.map((area) => `<div class="area-card">${area}</
 write(
   path.join(root, 'service-areas.html'),
   pageHtml({
-    depth: 0,
     title: 'Service Areas',
     heroTitle: 'Service Areas',
     heroIntro: 'Proudly serving Northern Virginia homeowners, estates, and commercial properties.',
@@ -955,7 +984,6 @@ write(
 write(
   path.join(root, 'about.html'),
   pageHtml({
-    depth: 0,
     title: 'About Us',
     heroTitle: 'About Us',
     heroIntro: 'Natural protection for the outdoor spaces you love most.',
@@ -972,6 +1000,6 @@ write(
   })
 );
 
-write(path.join(root, 'franchise-opportunities.html'), franchisePageHtml(0));
+write(path.join(root, 'franchise-opportunities.html'), franchisePageHtml());
 
 console.log('Built', SERVICES.length + RESOURCES.length + 4, 'landing pages.');
