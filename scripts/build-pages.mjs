@@ -388,11 +388,12 @@ ${HEADER_STYLES}
     margin: 8px 0 14px;
     line-height: 1.6;
   }
-  .placeholder-form-wrap {
+  .jobber-embed-wrap {
     margin-top: 40px;
     padding-top: 32px;
     border-top: 1px solid var(--border);
   }
+  #quote { scroll-margin-top: 110px; }
   .placeholder-form {
     display: grid;
     gap: 16px;
@@ -931,32 +932,11 @@ const TICK_MOSQUITO_BODY = `
     <p>Your yard should be a place where children can play, pets can roam, and families can enjoy the outdoors—not a place where you're constantly worrying about ticks and mosquitoes.</p>
     <p>With recurring monthly service from Natural Tick Defense, you receive continuous professional protection backed by technicians who understand Northern Virginia's unique climate, wildlife, and pest pressures. Instead of reacting after pests become a problem, we help you stay ahead of them with proactive monthly treatments that keep your property protected all season long.</p>`;
 
-const COMMERCIAL_PLACEHOLDER_FORM = `
-    <!-- PLACEHOLDER: Jobber quote form embed will replace this block -->
-    <div class="placeholder-form-wrap">
-      <form class="placeholder-form" aria-label="Commercial quote request placeholder" onsubmit="event.preventDefault();">
-        <label>
-          Name
-          <input type="text" name="name" autocomplete="name" placeholder="Your full name" />
-        </label>
-        <label>
-          Company Name
-          <input type="text" name="company" autocomplete="organization" placeholder="Your company or HOA" />
-        </label>
-        <label>
-          Phone
-          <input type="tel" name="phone" autocomplete="tel" placeholder="(555) 555-5555" />
-        </label>
-        <label>
-          Email
-          <input type="email" name="email" autocomplete="email" placeholder="you@example.com" />
-        </label>
-        <label>
-          Brief Property Description
-          <textarea name="property_description" placeholder="Property size, type, and any details we should know"></textarea>
-        </label>
-        <button type="button" class="btn btn-primary btn-placeholder" disabled aria-disabled="true">Request Proposal (Coming Soon)</button>
-      </form>
+const JOBBER_EMBED = `
+    <div class="jobber-embed-wrap" id="quote">
+      <div id="becf6403-a24e-4e7a-888b-07881393ffa1-4975712"></div>
+      <link rel="stylesheet" href="https://d3ey4dbjkt2f6s.cloudfront.net/assets/external/work_request_embed.css" media="screen" />
+      <script src="https://d3ey4dbjkt2f6s.cloudfront.net/assets/static_link/work_request_embed_snippet.js" clienthub_id="becf6403-a24e-4e7a-888b-07881393ffa1-4975712" form_url="https://clienthub.getjobber.com/client_hubs/becf6403-a24e-4e7a-888b-07881393ffa1/public/work_request/embedded_work_request_form?form_id=4975712"></script>
     </div>`;
 
 function serviceBody(s) {
@@ -1117,7 +1097,7 @@ function serviceBody(s) {
       <li>Government Agencies</li>
     </ul>
     <p>Contact us today to schedule a complimentary property evaluation and receive a customized protection proposal.</p>
-    ${COMMERCIAL_PLACEHOLDER_FORM}`;
+    ${JOBBER_EMBED}`;
     default:
       return `<p>${s.intro}</p>
     <h2>How we protect your property</h2>
