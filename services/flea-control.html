@@ -171,6 +171,74 @@
     font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 14px;
   }
   .page-content ul { margin: 0 0 20px 20px; }
+  .benefit-list {
+    list-style: none;
+    margin: 0 0 20px 0;
+    padding: 0;
+  }
+  .benefit-list li {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    padding-left: 22px;
+    position: relative;
+    line-height: 1.7;
+  }
+  .benefit-list li::before {
+    content: '✓';
+    color: var(--green-dark);
+    font-weight: 700;
+    position: absolute; left: 0; top: 0;
+  }
+  .page-lead {
+    font-style: italic;
+    font-size: 16px;
+    color: var(--text-muted);
+    margin: -8px 0 20px;
+    line-height: 1.6;
+  }
+  .page-emphasis {
+    font-style: italic;
+    font-size: 15px;
+    color: var(--text-muted);
+    margin: 8px 0 14px;
+    line-height: 1.6;
+  }
+  .placeholder-form-wrap {
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+  .placeholder-form {
+    display: grid;
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .placeholder-form label {
+    display: grid;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--green-darker);
+  }
+  .placeholder-form input,
+  .placeholder-form textarea {
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    background: #fff;
+    color: var(--text-dark);
+  }
+  .placeholder-form textarea { min-height: 120px; resize: vertical; }
+  .placeholder-form .btn-placeholder {
+    margin-top: 8px;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
   .page-cta { margin-top: 36px; display: flex; gap: 14px; flex-wrap: wrap; }
   .story-closing {
     font-family: 'Playfair Display', serif;
@@ -365,13 +433,13 @@
   <div class="page-content-inner">
     <a href="/index.html#services" class="page-back"><span aria-hidden="true">&lsaquo;</span> Back to Services</a>
     <p>Target fleas in yard harborage areas to help keep pets and family more comfortable outdoors.</p>
-    <h2>How we protect your property</h2>
-    <p>Our technicians apply a natural-based barrier treatment to key harborage areas—property edges, landscape beds, shaded zones, and areas where your family and pets spend time outdoors.</p>
-    <ul>
-      <li>Targeted applications based on your yard layout</li>
-      <li>Recurring seasonal treatments for ongoing protection</li>
-      <li>Pet- and family-conscious formulas when dry</li>
-      <li>Local Northern Virginia service you can count on</li>
+    <h2>More Than Just Ticks &amp; Mosquitoes</h2>
+    <p>Our monthly barrier treatments don't just target ticks and mosquitoes. The same treatment also helps reduce flea populations around your property. Fleas are commonly introduced by dogs, cats, deer, rabbits, squirrels, raccoons, and other wildlife. By maintaining a consistent monthly barrier, we help reduce fleas before they become established in your yard.</p>
+    <h2>Every Monthly Service Helps Protect Against:</h2>
+    <ul class="benefit-list">
+      <li>Ticks</li>
+      <li>Mosquitoes</li>
+      <li>Fleas</li>
     </ul>
     <div class="page-cta">
       <a href="/index.html#pricing" class="btn btn-primary">Choose My Plan</a>
@@ -400,7 +468,7 @@
         <li><a href="/services/mosquito-control.html">Mosquito Control</a></li>
         <li><a href="/services/flea-control.html">Flea Control</a></li>
         <li><a href="/services/ant-treatment.html">Ant Treatment</a></li>
-        <li><a href="/services/deer-repellent.html">Deer Repellent</a></li>
+        <li><a href="/services/deer-repellent.html">Winter Deer Repellent</a></li>
         <li><a href="/services/estate-protection.html">Estate Protection</a></li>
         <li><a href="/services/hoa-commercial.html">HOA & Commercial</a></li>
       </ul>

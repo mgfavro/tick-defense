@@ -171,6 +171,74 @@
     font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 14px;
   }
   .page-content ul { margin: 0 0 20px 20px; }
+  .benefit-list {
+    list-style: none;
+    margin: 0 0 20px 0;
+    padding: 0;
+  }
+  .benefit-list li {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    padding-left: 22px;
+    position: relative;
+    line-height: 1.7;
+  }
+  .benefit-list li::before {
+    content: '✓';
+    color: var(--green-dark);
+    font-weight: 700;
+    position: absolute; left: 0; top: 0;
+  }
+  .page-lead {
+    font-style: italic;
+    font-size: 16px;
+    color: var(--text-muted);
+    margin: -8px 0 20px;
+    line-height: 1.6;
+  }
+  .page-emphasis {
+    font-style: italic;
+    font-size: 15px;
+    color: var(--text-muted);
+    margin: 8px 0 14px;
+    line-height: 1.6;
+  }
+  .placeholder-form-wrap {
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+  .placeholder-form {
+    display: grid;
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .placeholder-form label {
+    display: grid;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--green-darker);
+  }
+  .placeholder-form input,
+  .placeholder-form textarea {
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    background: #fff;
+    color: var(--text-dark);
+  }
+  .placeholder-form textarea { min-height: 120px; resize: vertical; }
+  .placeholder-form .btn-placeholder {
+    margin-top: 8px;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
   .page-cta { margin-top: 36px; display: flex; gap: 14px; flex-wrap: wrap; }
   .story-closing {
     font-family: 'Playfair Display', serif;
@@ -400,7 +468,7 @@
         <li><a href="/services/mosquito-control.html">Mosquito Control</a></li>
         <li><a href="/services/flea-control.html">Flea Control</a></li>
         <li><a href="/services/ant-treatment.html">Ant Treatment</a></li>
-        <li><a href="/services/deer-repellent.html">Deer Repellent</a></li>
+        <li><a href="/services/deer-repellent.html">Winter Deer Repellent</a></li>
         <li><a href="/services/estate-protection.html">Estate Protection</a></li>
         <li><a href="/services/hoa-commercial.html">HOA & Commercial</a></li>
       </ul>

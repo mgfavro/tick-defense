@@ -355,6 +355,74 @@ ${HEADER_STYLES}
     font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 14px;
   }
   .page-content ul { margin: 0 0 20px 20px; }
+  .benefit-list {
+    list-style: none;
+    margin: 0 0 20px 0;
+    padding: 0;
+  }
+  .benefit-list li {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    padding-left: 22px;
+    position: relative;
+    line-height: 1.7;
+  }
+  .benefit-list li::before {
+    content: '✓';
+    color: var(--green-dark);
+    font-weight: 700;
+    position: absolute; left: 0; top: 0;
+  }
+  .page-lead {
+    font-style: italic;
+    font-size: 16px;
+    color: var(--text-muted);
+    margin: -8px 0 20px;
+    line-height: 1.6;
+  }
+  .page-emphasis {
+    font-style: italic;
+    font-size: 15px;
+    color: var(--text-muted);
+    margin: 8px 0 14px;
+    line-height: 1.6;
+  }
+  .placeholder-form-wrap {
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+  .placeholder-form {
+    display: grid;
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .placeholder-form label {
+    display: grid;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--green-darker);
+  }
+  .placeholder-form input,
+  .placeholder-form textarea {
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    background: #fff;
+    color: var(--text-dark);
+  }
+  .placeholder-form textarea { min-height: 120px; resize: vertical; }
+  .placeholder-form .btn-placeholder {
+    margin-top: 8px;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
   .page-cta { margin-top: 36px; display: flex; gap: 14px; flex-wrap: wrap; }
   .story-closing {
     font-family: 'Playfair Display', serif;
@@ -786,16 +854,6 @@ ${mobileMenuHtml()}
         <input type="text" name="occupation" placeholder="Your current role or business" />
       </label>
       <label>
-        Capital Available to Invest
-        <select name="capital">
-          <option value="">Select an option</option>
-          <option value="Under $50k">Under $50k</option>
-          <option value="$50k–$100k">$50k–$100k</option>
-          <option value="$100k–$250k">$100k–$250k</option>
-          <option value="$250k+">$250k+</option>
-        </select>
-      </label>
-      <label>
         Desired Timeline
         <select name="timeline">
           <option value="">Select an option</option>
@@ -892,8 +950,229 @@ function myStoryBody() {
     <p class="story-signature">— Reese Gardner<br/>Founder, Natural Tick Defense</p>`;
 }
 
+const TICK_MOSQUITO_BODY = `
+    <h2>Why Monthly Protection Matters</h2>
+    <p>Even after your property is treated, ticks are continually carried onto your property by deer, mice, squirrels, rabbits, birds, neighborhood pets, and other wildlife. Mosquitoes can travel from neighboring properties and lay eggs anywhere standing water is present.</p>
+    <p>Monthly treatments help reinforce your property's protective barrier while targeting newly introduced ticks and emerging mosquito populations before they become established.</p>
+    <h2>How We Protect Your Property</h2>
+    <p>During each monthly visit, our technicians carefully inspect your property and apply a natural-based barrier treatment to the areas where ticks and mosquitoes are most likely to live, travel, rest, and reproduce.</p>
+    <p>Treatment areas include:</p>
+    <ul>
+      <li>Wood lines and wooded property edges</li>
+      <li>Landscape beds and ornamental plantings</li>
+      <li>Tall grass and natural vegetation</li>
+      <li>Brush, leaf litter, and shaded areas</li>
+      <li>Fence lines and transition zones</li>
+      <li>Around patios, decks, fire pits, and outdoor living spaces</li>
+      <li>Children's play areas</li>
+      <li>Pet areas and dog runs</li>
+      <li>Foundation landscaping</li>
+      <li>Moist, shaded locations where mosquitoes rest during the day</li>
+    </ul>
+    <h2>Every Monthly Visit Includes</h2>
+    <ul>
+      <li>Complete property inspection</li>
+      <li>Customized treatment based on your landscape</li>
+      <li>Targeted tick and mosquito barrier application</li>
+      <li>Focus on high-activity and high-risk areas</li>
+      <li>Reinforcement of your existing protective barrier</li>
+      <li>Ongoing monitoring as conditions change throughout the season</li>
+    </ul>
+    <h2>Natural-Based Protection You Can Feel Good About</h2>
+    <p>Our natural-based treatment program is designed for homeowners who want an effective alternative to traditional synthetic treatments. Once the application has dried, treated areas can be enjoyed again according to our post-treatment instructions.</p>
+    <h2>Protect Your Family Every Month</h2>
+    <p>Your yard should be a place where children can play, pets can roam, and families can enjoy the outdoors—not a place where you're constantly worrying about ticks and mosquitoes.</p>
+    <p>With recurring monthly service from Natural Tick Defense, you receive continuous professional protection backed by technicians who understand Northern Virginia's unique climate, wildlife, and pest pressures. Instead of reacting after pests become a problem, we help you stay ahead of them with proactive monthly treatments that keep your property protected all season long.</p>`;
+
+const COMMERCIAL_PLACEHOLDER_FORM = `
+    <!-- PLACEHOLDER: Jobber quote form embed will replace this block -->
+    <div class="placeholder-form-wrap">
+      <form class="placeholder-form" aria-label="Commercial quote request placeholder" onsubmit="event.preventDefault();">
+        <label>
+          Name
+          <input type="text" name="name" autocomplete="name" placeholder="Your full name" />
+        </label>
+        <label>
+          Company Name
+          <input type="text" name="company" autocomplete="organization" placeholder="Your company or HOA" />
+        </label>
+        <label>
+          Phone
+          <input type="tel" name="phone" autocomplete="tel" placeholder="(555) 555-5555" />
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" autocomplete="email" placeholder="you@example.com" />
+        </label>
+        <label>
+          Brief Property Description
+          <textarea name="property_description" placeholder="Property size, type, and any details we should know"></textarea>
+        </label>
+        <button type="button" class="btn btn-primary btn-placeholder" disabled aria-disabled="true">Request Proposal (Coming Soon)</button>
+      </form>
+    </div>`;
+
 function serviceBody(s) {
-  return `<p>${s.intro}</p>
+  switch (s.slug) {
+    case 'tick-control':
+    case 'mosquito-control':
+      return `<p>${s.intro}</p>${TICK_MOSQUITO_BODY}`;
+    case 'flea-control':
+      return `<p>${s.intro}</p>
+    <h2>More Than Just Ticks &amp; Mosquitoes</h2>
+    <p>Our monthly barrier treatments don't just target ticks and mosquitoes. The same treatment also helps reduce flea populations around your property. Fleas are commonly introduced by dogs, cats, deer, rabbits, squirrels, raccoons, and other wildlife. By maintaining a consistent monthly barrier, we help reduce fleas before they become established in your yard.</p>
+    <h2>Every Monthly Service Helps Protect Against:</h2>
+    <ul class="benefit-list">
+      <li>Ticks</li>
+      <li>Mosquitoes</li>
+      <li>Fleas</li>
+    </ul>`;
+    case 'ant-treatment':
+      return `<p>${s.intro}</p>
+    <h2>How Our Monthly Barrier Helps Control Ants</h2>
+    <p>The same natural-based barrier treatment we use to help reduce ticks, mosquitoes, and fleas also helps reduce ant activity around your property.</p>
+    <p>Rather than treating individual ant mounds, our technicians apply a protective barrier around the areas where ants commonly travel, forage, and enter your property. As ants cross treated surfaces, the barrier helps disrupt their activity and reduces the number of ants around your home.</p>
+    <p>During every monthly visit, we focus on:</p>
+    <ul>
+      <li>Foundation perimeter</li>
+      <li>Landscape beds and mulch</li>
+      <li>Sidewalk and patio edges</li>
+      <li>Fence lines</li>
+      <li>Tree lines and wooded borders</li>
+      <li>Areas with visible ant trails</li>
+      <li>Outdoor living spaces</li>
+      <li>Other high-activity areas identified during your inspection</li>
+    </ul>
+    <p>Because new ant colonies can move onto your property throughout the year, recurring monthly treatments help maintain a consistent protective barrier that discourages ants from becoming established around your home.</p>`;
+    case 'deer-repellent':
+      return `<p>At Natural Tick Defense, protection doesn't stop when tick and mosquito season ends. As part of your monthly subscription, we transition to protecting one of your home's biggest investments—your landscape.</p>
+    <p>During the winter months, when ticks and mosquitoes become inactive, deer begin searching for food. As natural vegetation becomes scarce, they often feed on ornamental shrubs, evergreens, young trees, and decorative landscaping, causing thousands of dollars in damage.</p>
+    <p>That's why Winter Deer Protection is included with every monthly subscription.</p>
+    <h2>Why Winter Protection Matters</h2>
+    <p>Deer browsing can permanently damage or kill valuable landscape plants in just a few weeks. Once damaged, many shrubs and evergreens require years to recover—or may need to be replaced entirely.</p>
+    <p>Our winter applications help protect commonly damaged plants, including:</p>
+    <ul>
+      <li>Arborvitae</li>
+      <li>Boxwoods</li>
+      <li>Hollies</li>
+      <li>Yews</li>
+      <li>Rhododendrons</li>
+      <li>Hydrangeas</li>
+      <li>Roses</li>
+      <li>Young ornamental trees</li>
+      <li>Evergreen privacy screens</li>
+      <li>Newly installed landscaping</li>
+    </ul>
+    <h2>How We Protect Your Landscape</h2>
+    <p>Our technicians apply a natural-based deer repellent to the plants deer find most attractive. Each application is customized to your property's landscaping and focuses on high-value ornamental plants and areas most vulnerable to browsing.</p>
+    <p>Treatment areas include:</p>
+    <ul>
+      <li>Privacy hedges</li>
+      <li>Landscape beds</li>
+      <li>Ornamental shrubs</li>
+      <li>Decorative trees</li>
+      <li>Garden borders</li>
+      <li>New plantings</li>
+      <li>High-value landscape features</li>
+    </ul>
+    <h2>Year-Round Protection. One Simple Subscription.</h2>
+    <p>Your monthly subscription is designed to provide value throughout the entire year.</p>
+    <p class="page-emphasis">Spring, Summer &amp; Fall</p>
+    <ul class="benefit-list">
+      <li>Tick Protection</li>
+      <li>Mosquito Protection</li>
+      <li>Flea Protection</li>
+      <li>Ant Protection</li>
+    </ul>
+    <p class="page-emphasis">Winter</p>
+    <ul class="benefit-list">
+      <li>Natural Deer Repellent</li>
+      <li>Landscape Protection</li>
+      <li>Continued Property Care</li>
+    </ul>
+    <p>With Natural Tick Defense, you don't have to sign up for separate seasonal services or remember to schedule winter applications. Your subscription automatically transitions with the seasons, ensuring your property receives the protection it needs year-round.</p>
+    <p>From helping reduce ticks and mosquitoes during the warmer months to protecting your landscape from hungry deer in the winter, our goal is simple: keep your family, your yard, and your investment protected every month of the year.</p>`;
+    case 'hoa-commercial':
+      return `<p>Whether you're managing a homeowners association, commercial campus, apartment community, park, school, or large private estate, Natural Tick Defense provides customized natural-based pest management programs designed to help protect the outdoor spaces people use every day.</p>
+    <p>Our commercial services are tailored to each property's size, landscape, usage, and pest pressures, delivering consistent protection through scheduled recurring treatments.</p>
+    <h2>Properties We Serve</h2>
+    <ul>
+      <li>Homeowners Associations (HOAs)</li>
+      <li>Commercial Office Campuses</li>
+      <li>Apartment &amp; Condominium Communities</li>
+      <li>Country Clubs &amp; Golf Communities</li>
+      <li>Hotels &amp; Resorts</li>
+      <li>Parks &amp; Recreation Areas</li>
+      <li>Schools &amp; Daycare Centers</li>
+      <li>Churches</li>
+      <li>Municipal &amp; Government Facilities</li>
+      <li>Athletic Fields</li>
+      <li>Large Private Estates (5+ Acres)</li>
+    </ul>
+    <h2>Our Commercial Protection Programs Help Reduce</h2>
+    <ul>
+      <li>Ticks</li>
+      <li>Mosquitoes</li>
+      <li>Fleas</li>
+      <li>Ants</li>
+    </ul>
+    <p>Each treatment is customized based on your property's unique landscape, wooded areas, common spaces, walking trails, retention ponds, playgrounds, and outdoor gathering areas.</p>
+    <h2>Helping Protect Your Property—and Those Who Use It</h2>
+    <p>Ticks and mosquitoes are more than just a nuisance. They can impact the comfort of residents, employees, customers, guests, and visitors while limiting the enjoyment of outdoor spaces.</p>
+    <p>A proactive, recurring pest management program helps property owners and managers demonstrate a commitment to maintaining cleaner, more comfortable outdoor environments while helping reduce pest activity in high-use areas. Regular service also supports a comprehensive property maintenance program by helping address pest pressures before they become larger issues.</p>
+    <p>Our programs are designed to help protect:</p>
+    <ul>
+      <li>Residents and homeowners</li>
+      <li>Employees and customers</li>
+      <li>Hotel and resort guests</li>
+      <li>Students and faculty</li>
+      <li>Visitors and community members</li>
+      <li>Outdoor amenities and common areas</li>
+    </ul>
+    <h2>Customized for Your Property</h2>
+    <p>No two commercial properties are alike. We develop a treatment plan based on:</p>
+    <ul>
+      <li>Property size and acreage</li>
+      <li>Landscape design</li>
+      <li>Wooded and natural areas</li>
+      <li>Walking trails</li>
+      <li>Community amenities</li>
+      <li>Outdoor recreation spaces</li>
+      <li>Employee and resident activity</li>
+      <li>Seasonal pest pressure</li>
+    </ul>
+    <h2>Recurring Protection for High-Traffic Properties</h2>
+    <p>Our recurring service programs help maintain a consistent protective barrier throughout the season, allowing residents, guests, employees, and visitors to enjoy outdoor spaces more comfortably.</p>
+    <p>Treatment areas may include:</p>
+    <ul>
+      <li>Common areas</li>
+      <li>Walking paths</li>
+      <li>Clubhouses</li>
+      <li>Pools</li>
+      <li>Playgrounds</li>
+      <li>Dog parks</li>
+      <li>Athletic fields</li>
+      <li>Picnic areas</li>
+      <li>Landscape beds</li>
+      <li>Wood lines</li>
+      <li>Property perimeters</li>
+      <li>Stormwater ponds and surrounding vegetation</li>
+    </ul>
+    <h2>Request a Customized Proposal</h2>
+    <p>Every commercial property has different needs. We'll evaluate your property, discuss your goals, and develop a customized protection program designed specifically for your landscape, property usage, and budget.</p>
+    <h2>Custom Solutions Available For</h2>
+    <ul>
+      <li>5+ Acre Properties</li>
+      <li>Homeowners Associations</li>
+      <li>Commercial Properties</li>
+      <li>Municipal Facilities</li>
+      <li>Multi-Family Communities</li>
+      <li>Government Agencies</li>
+    </ul>
+    <p>Contact us today to schedule a complimentary property evaluation and receive a customized protection proposal.</p>
+    ${COMMERCIAL_PLACEHOLDER_FORM}`;
+    default:
+      return `<p>${s.intro}</p>
     <h2>How we protect your property</h2>
     <p>Our technicians apply a natural-based barrier treatment to key harborage areas—property edges, landscape beds, shaded zones, and areas where your family and pets spend time outdoors.</p>
     <ul>
@@ -902,6 +1181,7 @@ function serviceBody(s) {
       <li>Pet- and family-conscious formulas when dry</li>
       <li>Local Northern Virginia service you can count on</li>
     </ul>`;
+  }
 }
 
 function resourceBody(r) {
@@ -932,7 +1212,7 @@ for (const s of SERVICES) {
     path.join(root, 'services', `${s.slug}.html`),
     pageHtml({
       title: s.title,
-      heroTitle: s.title,
+      heroTitle: s.heroTitle || s.title,
       heroIntro: s.intro,
       body: serviceBody(s),
       backHref: siteUrl('index.html#services'),

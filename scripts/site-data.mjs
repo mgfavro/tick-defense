@@ -11,9 +11,9 @@ export const SERVICES = [
   { title: 'Mosquito Control', slug: 'mosquito-control', intro: 'Enjoy patios, play areas, and outdoor gatherings with fewer mosquito bites all season long.' },
   { title: 'Flea Control', slug: 'flea-control', intro: 'Target fleas in yard harborage areas to help keep pets and family more comfortable outdoors.' },
   { title: 'Ant Treatment', slug: 'ant-treatment', intro: 'Eliminate ant activity along foundations, walkways, and landscape beds around your property.' },
-  { title: 'Deer Repellent', slug: 'deer-repellent', intro: 'Protect ornamental plantings and landscaping from deer browsing with professional applications.' },
+  { title: 'Winter Deer Repellent', slug: 'deer-repellent', heroTitle: 'Winter Deer Protection', intro: 'Your Subscription Protects More Than Just Your Family—It Helps Protect Your Landscape.' },
   { title: 'Estate Protection', slug: 'estate-protection', intro: 'Comprehensive protection for larger properties, wooded acreage, and estate living.' },
-  { title: 'HOA & Commercial', slug: 'hoa-commercial', intro: 'Custom tick and mosquito programs for HOAs, restaurants, wineries, resorts, and commercial outdoor spaces.' },
+  { title: 'HOA & Commercial', slug: 'hoa-commercial', heroTitle: 'Commercial & HOA Protection', intro: 'Custom Property Protection for Larger Outdoor Spaces' },
 ];
 
 export const RESOURCES = [
