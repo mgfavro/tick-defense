@@ -744,6 +744,16 @@
     color: var(--text-muted);
   }
   .footer-bottom .links { display: flex; gap: 20px; }
+  .footer-credit {
+    max-width: 1280px; margin: 14px auto 0;
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 0.03em;
+    color: var(--text-muted);
+    opacity: 0.6;
+  }
+  .footer-credit a { color: inherit; text-decoration: none; }
+  .footer-credit a:hover { text-decoration: underline; }
 
   /* Desktop: scale hero with viewport (matches ~125% zoom proportions) */
   @media (min-width: 1400px) {
@@ -1279,6 +1289,7 @@
       <a href="#">Terms of Service</a>
     </div>
   </div>
+  <div class="footer-credit">Website by <a href="https://favrodigital.com" target="_blank" rel="noopener">favrodigital.com</a></div>
 </footer>
 
 <!-- ============== MOBILE ACTION BAR ============== -->
