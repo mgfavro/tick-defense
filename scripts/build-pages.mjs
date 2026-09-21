@@ -6,6 +6,11 @@ import { SERVICES, RESOURCES, SERVICE_AREAS } from './site-data.mjs';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, '..');
 
+// ---- Business contact info (single source of truth) ----
+const PHONE_TEL = '+15406809693';
+const PHONE_DISPLAY = '(540) 680-9693';
+const EMAIL = 'info@naturaltickdefense.com';
+
 function siteUrl(path) {
   const hashIdx = path.indexOf('#');
   if (hashIdx === -1) return '/' + path.replace(/^\//, '');
@@ -37,6 +42,7 @@ function navHtml() {
       <a href="${home}#services">Services</a>
       <a href="${siteUrl('my-story.html')}">My Story</a>
       <a href="${siteUrl('service-areas.html')}">Service Areas</a>
+      <a href="${siteUrl('contact.html')}">Contact</a>
     </nav>`;
 }
 
@@ -82,7 +88,7 @@ function mobileMenuHtml() {
     <a href="${siteUrl('franchise-opportunities.html')}">Franchise Opportunities <span class="chev">&rsaquo;</span></a>
     <a href="${siteUrl('my-story.html')}">My Story <span class="chev">&rsaquo;</span></a>
     <a href="${siteUrl('service-areas.html')}">Service Areas <span class="chev">&rsaquo;</span></a>
-    <a href="${home}#pricing">Contact Us <span class="chev">&rsaquo;</span></a>
+    <a href="${siteUrl('contact.html')}">Contact Us <span class="chev">&rsaquo;</span></a>
   </nav>
   <div class="mobile-menu-trust">
     <strong>Protection You Can Trust</strong>
@@ -94,11 +100,11 @@ function mobileMenuHtml() {
 function mobileBarHtml() {
   const home = siteUrl('index.html');
   return `<nav class="mobile-bar" aria-label="Quick actions">
-  <a href="tel:+17036222450">
+  <a href="tel:${PHONE_TEL}">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.69 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.56 2.81.69A2 2 0 0 1 22 16.92z"/></svg>
     Call
   </a>
-  <a href="sms:+17036222450">
+  <a href="sms:${PHONE_TEL}">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
     Text
   </a>
@@ -121,6 +127,10 @@ function footerHtml() {
       <a href="${home}" class="logo">
 ${logoBlock('footer')}
       </a>
+      <div class="footer-contact">
+        <a href="tel:${PHONE_TEL}">${PHONE_DISPLAY}</a>
+        <a href="mailto:${EMAIL}">${EMAIL}</a>
+      </div>
     </div>
     <div>
       <h6>Services</h6>
@@ -131,6 +141,7 @@ ${logoBlock('footer')}
     <div>
       <h6>Company</h6>
       <ul>
+        <li><a href="${siteUrl('contact.html')}">Contact Us</a></li>
         <li><a href="${siteUrl('franchise-opportunities.html')}">Franchise Opportunities</a></li>
       </ul>
     </div>
@@ -494,6 +505,9 @@ ${HEADER_STYLES}
     display: inline-block;
   }
   .footer li a:hover { color: var(--green-dark); }
+  .footer-contact { margin-top: 16px; display: flex; flex-direction: column; gap: 6px; }
+  .footer-contact a { font-size: 13px; color: var(--text-dark); font-weight: 600; }
+  .footer-contact a:hover { color: var(--green-dark); }
   .footer-areas p { color: var(--text-muted) !important; }
   .footer-bottom {
     max-width: 1280px; margin: 36px auto 0; padding-top: 22px;
@@ -742,6 +756,187 @@ const FRANCHISE_FORM_SCRIPT = `<script>
   });
 })();
 </script>`;
+
+const CONTACT_STYLES = `
+  .contact-methods {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 16px; margin: 0 0 44px;
+  }
+  .contact-card {
+    background: #fff; border: 1px solid var(--border); border-radius: 8px;
+    padding: 28px 24px; text-align: center;
+    transition: box-shadow .2s, transform .2s, border-color .2s;
+  }
+  .contact-card:hover { border-color: var(--green-dark); box-shadow: 0 8px 22px rgba(0,0,0,0.06); transform: translateY(-2px); }
+  .contact-card .ci {
+    width: 46px; height: 46px; margin: 0 auto 14px; color: var(--green-dark);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .contact-card h3 {
+    font-size: 12px; font-weight: 700; letter-spacing: 1.2px;
+    text-transform: uppercase; color: var(--green-darker); margin-bottom: 10px;
+  }
+  .contact-card .value { font-size: 16px; font-weight: 700; color: var(--green-dark); display: inline-block; }
+  a.contact-card .value, .contact-card a.value:hover { text-decoration: underline; }
+  .contact-card .sub { font-size: 13px; color: var(--text-muted); margin-top: 6px; line-height: 1.5; }
+  .contact-form {
+    display: grid; gap: 16px; margin-top: 20px;
+    background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 28px;
+  }
+  .contact-form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .contact-form label {
+    display: grid; gap: 6px; font-size: 12px; font-weight: 700;
+    letter-spacing: 0.5px; text-transform: uppercase; color: var(--green-darker);
+  }
+  .contact-form input, .contact-form textarea {
+    padding: 12px 14px; border: 1px solid var(--border); border-radius: 4px;
+    font-family: inherit; font-size: 15px; width: 100%; box-sizing: border-box;
+    background: #fff; color: var(--text-dark);
+  }
+  .contact-form textarea { min-height: 140px; resize: vertical; }
+  .contact-form input:focus, .contact-form textarea:focus { outline: 2px solid var(--green-dark); outline-offset: 1px; }
+  .contact-form .btn { border: none; cursor: pointer; width: 100%; margin-top: 4px; }
+  .contact-form .btn:disabled { opacity: 0.65; cursor: not-allowed; }
+  .contact-form-status { font-size: 14px; text-align: center; line-height: 1.5; margin: 0; }
+  .contact-form-status.success { color: var(--green-dark); font-weight: 600; }
+  .contact-form-status.error { color: #b00020; font-weight: 600; }
+  .contact-honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  @media (max-width: 600px) { .contact-form .row { grid-template-columns: 1fr; } }
+`;
+
+const CONTACT_FORM_SCRIPT = `<script>
+(function () {
+  var form = document.getElementById('contactForm');
+  if (!form) return;
+  var statusEl = document.getElementById('contactFormStatus');
+  var submitBtn = document.getElementById('contactSubmitBtn');
+  var ACCESS_KEY = '69b2cc1e-c900-44b9-a0fc-b6909e761f21';
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    statusEl.textContent = '';
+    statusEl.className = 'contact-form-status';
+
+    var data = new FormData(form);
+    var payload = { access_key: ACCESS_KEY };
+    data.forEach(function (value, key) {
+      payload[key] = value;
+    });
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    })
+      .then(function (res) { return res.json(); })
+      .then(function (json) {
+        if (json.success) {
+          statusEl.textContent = "Thanks — we'll be in touch soon.";
+          statusEl.classList.add('success');
+          form.reset();
+        } else {
+          throw new Error(json.message || 'Submission failed');
+        }
+      })
+      .catch(function () {
+        statusEl.textContent = 'Something went wrong. Please try again or call us directly.';
+        statusEl.classList.add('error');
+      })
+      .finally(function () {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+      });
+  });
+})();
+</script>`;
+
+function contactPageHtml() {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact Us — Natural Tick Defense</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>${PAGE_STYLES}${CONTACT_STYLES}</style>
+</head>
+<body>
+${headerHtml()}
+${mobileMenuHtml()}
+<section class="page-hero">
+  <h1>Contact Us</h1>
+  <p>Questions about protecting your yard? We're here to help. Reach out and a member of our team will get back to you.</p>
+</section>
+<section class="page-content">
+  <div class="page-content-inner">
+    <div class="contact-methods">
+      <a class="contact-card" href="tel:${PHONE_TEL}">
+        <div class="ci"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.69 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.56 2.81.69A2 2 0 0 1 22 16.92z"/></svg></div>
+        <h3>Call or Text</h3>
+        <span class="value">${PHONE_DISPLAY}</span>
+        <p class="sub">We're happy to answer any questions</p>
+      </a>
+      <a class="contact-card" href="mailto:${EMAIL}">
+        <div class="ci"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></div>
+        <h3>Email</h3>
+        <span class="value">${EMAIL}</span>
+        <p class="sub">We reply within 1 business day</p>
+      </a>
+      <div class="contact-card">
+        <div class="ci"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h3>Service Area</h3>
+        <span class="value" style="cursor:default;text-decoration:none">Northern Virginia</span>
+        <p class="sub">Proudly serving local families &amp; businesses</p>
+      </div>
+    </div>
+    <h2>Send Us a Message</h2>
+    <form class="contact-form" id="contactForm" novalidate aria-label="Contact form">
+      <input type="hidden" name="subject" value="New Contact Inquiry — Natural Tick Defense" />
+      <div class="contact-honeypot" aria-hidden="true">
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" />
+      </div>
+      <div class="row">
+        <label>
+          Full Name *
+          <input type="text" name="name" autocomplete="name" placeholder="Your full name" required />
+        </label>
+        <label>
+          Phone Number
+          <input type="tel" name="phone" autocomplete="tel" placeholder="(555) 555-5555" />
+        </label>
+      </div>
+      <label>
+        Email *
+        <input type="email" name="email" autocomplete="email" placeholder="you@example.com" required />
+      </label>
+      <label>
+        How Can We Help? *
+        <textarea name="message" placeholder="Tell us about your property and what you're looking for" required></textarea>
+      </label>
+      <button type="submit" class="btn btn-primary" id="contactSubmitBtn">Send Message</button>
+      <p class="contact-form-status" id="contactFormStatus" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+${footerHtml()}
+${mobileBarHtml()}
+${NAV_SCRIPT}
+${CONTACT_FORM_SCRIPT}
+</body>
+</html>`;
+}
 
 function franchisePageHtml() {
   return `<!DOCTYPE html>
@@ -1212,4 +1407,6 @@ write(
 
 write(path.join(root, 'franchise-opportunities.html'), franchisePageHtml());
 
-console.log('Built', SERVICES.length + RESOURCES.length + 4, 'landing pages.');
+write(path.join(root, 'contact.html'), contactPageHtml());
+
+console.log('Built', SERVICES.length + RESOURCES.length + 5, 'landing pages.');

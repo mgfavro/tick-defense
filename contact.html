@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Tick Control — Natural Tick Defense</title>
+<title>Contact Us — Natural Tick Defense</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -369,6 +369,51 @@
     .mobile-bar { display: grid; }
     body { padding-bottom: 60px; }
   }
+
+  .contact-methods {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 16px; margin: 0 0 44px;
+  }
+  .contact-card {
+    background: #fff; border: 1px solid var(--border); border-radius: 8px;
+    padding: 28px 24px; text-align: center;
+    transition: box-shadow .2s, transform .2s, border-color .2s;
+  }
+  .contact-card:hover { border-color: var(--green-dark); box-shadow: 0 8px 22px rgba(0,0,0,0.06); transform: translateY(-2px); }
+  .contact-card .ci {
+    width: 46px; height: 46px; margin: 0 auto 14px; color: var(--green-dark);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .contact-card h3 {
+    font-size: 12px; font-weight: 700; letter-spacing: 1.2px;
+    text-transform: uppercase; color: var(--green-darker); margin-bottom: 10px;
+  }
+  .contact-card .value { font-size: 16px; font-weight: 700; color: var(--green-dark); display: inline-block; }
+  a.contact-card .value, .contact-card a.value:hover { text-decoration: underline; }
+  .contact-card .sub { font-size: 13px; color: var(--text-muted); margin-top: 6px; line-height: 1.5; }
+  .contact-form {
+    display: grid; gap: 16px; margin-top: 20px;
+    background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 28px;
+  }
+  .contact-form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .contact-form label {
+    display: grid; gap: 6px; font-size: 12px; font-weight: 700;
+    letter-spacing: 0.5px; text-transform: uppercase; color: var(--green-darker);
+  }
+  .contact-form input, .contact-form textarea {
+    padding: 12px 14px; border: 1px solid var(--border); border-radius: 4px;
+    font-family: inherit; font-size: 15px; width: 100%; box-sizing: border-box;
+    background: #fff; color: var(--text-dark);
+  }
+  .contact-form textarea { min-height: 140px; resize: vertical; }
+  .contact-form input:focus, .contact-form textarea:focus { outline: 2px solid var(--green-dark); outline-offset: 1px; }
+  .contact-form .btn { border: none; cursor: pointer; width: 100%; margin-top: 4px; }
+  .contact-form .btn:disabled { opacity: 0.65; cursor: not-allowed; }
+  .contact-form-status { font-size: 14px; text-align: center; line-height: 1.5; margin: 0; }
+  .contact-form-status.success { color: var(--green-dark); font-weight: 600; }
+  .contact-form-status.error { color: #b00020; font-weight: 600; }
+  .contact-honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  @media (max-width: 600px) { .contact-form .row { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -431,48 +476,58 @@
   </div>
 </div>
 <section class="page-hero">
-  <h1>Tick Control</h1>
-  <p>Reduce tick populations around your home and reclaim your yard with natural-based barrier treatments.</p>
+  <h1>Contact Us</h1>
+  <p>Questions about protecting your yard? We're here to help. Reach out and a member of our team will get back to you.</p>
 </section>
 <section class="page-content">
   <div class="page-content-inner">
-    <a href="/index.html#services" class="page-back"><span aria-hidden="true">&lsaquo;</span> Back to Services</a>
-    <p>Reduce tick populations around your home and reclaim your yard with natural-based barrier treatments.</p>
-    <h2>Why Monthly Protection Matters</h2>
-    <p>Even after your property is treated, ticks are continually carried onto your property by deer, mice, squirrels, rabbits, birds, neighborhood pets, and other wildlife. Mosquitoes can travel from neighboring properties and lay eggs anywhere standing water is present.</p>
-    <p>Monthly treatments help reinforce your property's protective barrier while targeting newly introduced ticks and emerging mosquito populations before they become established.</p>
-    <h2>How We Protect Your Property</h2>
-    <p>During each monthly visit, our technicians carefully inspect your property and apply a natural-based barrier treatment to the areas where ticks and mosquitoes are most likely to live, travel, rest, and reproduce.</p>
-    <p>Treatment areas include:</p>
-    <ul>
-      <li>Wood lines and wooded property edges</li>
-      <li>Landscape beds and ornamental plantings</li>
-      <li>Tall grass and natural vegetation</li>
-      <li>Brush, leaf litter, and shaded areas</li>
-      <li>Fence lines and transition zones</li>
-      <li>Around patios, decks, fire pits, and outdoor living spaces</li>
-      <li>Children's play areas</li>
-      <li>Pet areas and dog runs</li>
-      <li>Foundation landscaping</li>
-      <li>Moist, shaded locations where mosquitoes rest during the day</li>
-    </ul>
-    <h2>Every Monthly Visit Includes</h2>
-    <ul>
-      <li>Complete property inspection</li>
-      <li>Customized treatment based on your landscape</li>
-      <li>Targeted tick and mosquito barrier application</li>
-      <li>Focus on high-activity and high-risk areas</li>
-      <li>Reinforcement of your existing protective barrier</li>
-      <li>Ongoing monitoring as conditions change throughout the season</li>
-    </ul>
-    <h2>Natural-Based Protection You Can Feel Good About</h2>
-    <p>Our natural-based treatment program is designed for homeowners who want an effective alternative to traditional synthetic treatments. Once the application has dried, treated areas can be enjoyed again according to our post-treatment instructions.</p>
-    <h2>Protect Your Family Every Month</h2>
-    <p>Your yard should be a place where children can play, pets can roam, and families can enjoy the outdoors—not a place where you're constantly worrying about ticks and mosquitoes.</p>
-    <p>With recurring monthly service from Natural Tick Defense, you receive continuous professional protection backed by technicians who understand Northern Virginia's unique climate, wildlife, and pest pressures. Instead of reacting after pests become a problem, we help you stay ahead of them with proactive monthly treatments that keep your property protected all season long.</p>
-    <div class="page-cta">
-      <a href="/index.html#pricing" class="btn btn-primary">Choose My Plan</a>
+    <div class="contact-methods">
+      <a class="contact-card" href="tel:+15406809693">
+        <div class="ci"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.69 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.56 2.81.69A2 2 0 0 1 22 16.92z"/></svg></div>
+        <h3>Call or Text</h3>
+        <span class="value">(540) 680-9693</span>
+        <p class="sub">We're happy to answer any questions</p>
+      </a>
+      <a class="contact-card" href="mailto:info@naturaltickdefense.com">
+        <div class="ci"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></div>
+        <h3>Email</h3>
+        <span class="value">info@naturaltickdefense.com</span>
+        <p class="sub">We reply within 1 business day</p>
+      </a>
+      <div class="contact-card">
+        <div class="ci"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h3>Service Area</h3>
+        <span class="value" style="cursor:default;text-decoration:none">Northern Virginia</span>
+        <p class="sub">Proudly serving local families &amp; businesses</p>
+      </div>
     </div>
+    <h2>Send Us a Message</h2>
+    <form class="contact-form" id="contactForm" novalidate aria-label="Contact form">
+      <input type="hidden" name="subject" value="New Contact Inquiry — Natural Tick Defense" />
+      <div class="contact-honeypot" aria-hidden="true">
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" />
+      </div>
+      <div class="row">
+        <label>
+          Full Name *
+          <input type="text" name="name" autocomplete="name" placeholder="Your full name" required />
+        </label>
+        <label>
+          Phone Number
+          <input type="tel" name="phone" autocomplete="tel" placeholder="(555) 555-5555" />
+        </label>
+      </div>
+      <label>
+        Email *
+        <input type="email" name="email" autocomplete="email" placeholder="you@example.com" required />
+      </label>
+      <label>
+        How Can We Help? *
+        <textarea name="message" placeholder="Tell us about your property and what you're looking for" required></textarea>
+      </label>
+      <button type="submit" class="btn btn-primary" id="contactSubmitBtn">Send Message</button>
+      <p class="contact-form-status" id="contactFormStatus" role="status" aria-live="polite"></p>
+    </form>
   </div>
 </section>
 <footer class="footer">
@@ -580,6 +635,61 @@
   if (toggle) toggle.addEventListener('click', openMenu);
   if (closeBtn) closeBtn.addEventListener('click', closeMenu);
   if (menu) menu.querySelectorAll('.mobile-menu-links a').forEach(function (a) { a.addEventListener('click', closeMenu); });
+})();
+</script>
+<script>
+(function () {
+  var form = document.getElementById('contactForm');
+  if (!form) return;
+  var statusEl = document.getElementById('contactFormStatus');
+  var submitBtn = document.getElementById('contactSubmitBtn');
+  var ACCESS_KEY = '69b2cc1e-c900-44b9-a0fc-b6909e761f21';
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    statusEl.textContent = '';
+    statusEl.className = 'contact-form-status';
+
+    var data = new FormData(form);
+    var payload = { access_key: ACCESS_KEY };
+    data.forEach(function (value, key) {
+      payload[key] = value;
+    });
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    })
+      .then(function (res) { return res.json(); })
+      .then(function (json) {
+        if (json.success) {
+          statusEl.textContent = "Thanks — we'll be in touch soon.";
+          statusEl.classList.add('success');
+          form.reset();
+        } else {
+          throw new Error(json.message || 'Submission failed');
+        }
+      })
+      .catch(function () {
+        statusEl.textContent = 'Something went wrong. Please try again or call us directly.';
+        statusEl.classList.add('error');
+      })
+      .finally(function () {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+      });
+  });
 })();
 </script>
 </body>
